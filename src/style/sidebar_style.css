@@ -1,0 +1,81 @@
+#side-bar{ 
+    height: 100vh;
+    width: 10%; 
+    background: linear-gradient(#222222,#333333 );
+    position: absolute; 
+  }
+  .side-text-detail{ 
+
+}
+.logo{ 
+    font-size: 30px;
+    text-align: center;
+    margin-top: 10px;
+    color: #cecece;
+  }
+
+  
+.p-name{ 
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    background: #3f1d82;
+    padding: 10px;
+    font-weight: 400;
+    cursor: pointer;
+    margin-top: -10px;
+    transition: 0.5s;
+  
+  }
+  .p-name:hover{ 
+    font-size: 25px;
+    background: #351379;
+  
+  }
+
+
+  /*Side bar bottom*/
+#bottom-side-bar{ 
+    height: 60px;
+    width: 100%;
+    /* background: red; */
+    position: absolute;
+    bottom: 10px;
+  }
+  #user-image{ 
+    border-radius: 50%;
+    overflow: hidden;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    position: absolute;
+    left: 35%;
+  }
+  #user-image > img{
+    height: 50px;
+    width: 50px; 
+  
+    
+  }
+  #user-bar { 
+    display: grid;
+    position: absolute;
+    width: 100%;
+    bottom: 75px;
+    transition: 2s;
+  }
+  
+  #user-bar > button{ 
+    background: #91059b;
+      height: 40px;
+      width: 100%;
+      border-radius: 5px;
+      outline: none;
+      border: none;
+      color: white;
+      margin-top: 3px;
+      transition: 0.4s;
+  }
+  #user-bar > button:hover{ 
+    background: #b604e2;
+  }

@@ -1,0 +1,104 @@
+
+
+
+  #task-bar > p { 
+    color: white;
+    padding-left: 50px; 
+  }
+  .dot {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: rgb(0, 140, 255); 
+  margin-left: 100pxrgb(0, 110, 255);
+  padding: 1px 1px 1px 0px;
+  }
+  
+  
+  .project{ 
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .project-name{ 
+    width: 10%;
+  }
+  .project-detail{ 
+   width: 40%;
+  }
+  .project-detail-cover{ 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  
+  
+  
+  .project-due{ 
+    width: 20%;
+  }
+  .project-priority{ 
+  }
+  .project-detail{ 
+    width: 25%;
+  }
+  .barExpand{ 
+    transition: 0.5s;
+  }
+  
+  
+  #progress-measure{ 
+    /* display: contents; */
+    position: absolute;
+    bottom: 10px;
+    left: 25px;
+    width: 50%;
+  }
+  #progress-meter{ 
+    width: 100%;
+  
+  }
+  
+  
+  #task-done{ 
+    height: 20px;
+    width: 20px;
+  }
+  
+  
+  
+  #task-belongs-to-user{ 
+    height: 40px;
+    width: 40px;
+    overflow: hidden;
+    border-radius: 100%;
+    margin-top: 5px;
+  }
+  
+  
+  
+  #task-belongs-to-user > img{ 
+    width: 100%;
+  }
+  
+  #task-belongs-to-username{ 
+    color: white;
+    margin: 10px 0 0 10px; 
+  }
+
+
+  #btn_tags{ 
+    display: grid;
+    width: 150px;
+    height: 18px;
+    font-size: 12px;
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    background: red;
+    color: white;
+    margin: 4px 0 1px 30px;
+  }

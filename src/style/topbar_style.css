@@ -1,0 +1,32 @@
+#top-bar-detail{ 
+    width: 97%;
+    color: white;
+    display: flex;
+    margin-left: 66px;
+    padding-top: 17px;
+}
+
+.col-title{ 
+    margin-left: 10px;
+}
+
+.priority_dropdown{ 
+    position: relative;
+    z-index: 1;
+    display: grid;
+    transition: visibility 0s, opacity 0.5s linear;
+}
+
+.priority_dropdown > a{ 
+    background: white;
+    height: 30px;
+    width: 70px;
+    text-align: center;
+    margin-top: 5px;
+    padding-top: 4px;
+    text-decoration: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: visibility 0s, opacity 0.5s linear;
+
+}
