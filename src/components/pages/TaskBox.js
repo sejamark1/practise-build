@@ -1,7 +1,7 @@
 import styled from "styled-components";
 function TaskBox(props){ 
     return (
-        <div id="task-bar">
+        <TaskBarBox id="task-bar">
                 <div className="project project-name">{props.projectName}</div>
                 <div className="project project-detail project-detail-cover">We need a process that will track the inventory and status of components in the chassis.
                   It should accept IPC requests from the various cards, maintain an internal database of what's currently available,
@@ -24,7 +24,7 @@ function TaskBox(props){
                   <button id="btn_tags" style={{backgroundColor: "rgb(255, 50, 0)"}} >Design</button>
                   <button id="btn_tags" style={{backgroundColor: "rgb(85, 255, 0)"}} >Develop</button>
                 </div>
-            </div>
+            </TaskBarBox>
         
 
         
@@ -47,4 +47,8 @@ const TaskBarBox = styled.div`
     transition: 0.4s;
     border-radius: 5px;
     cursor: pointer;
+    &.p{ 
+        color: green;
+        padding-left: 50px; 
+    }
 `
