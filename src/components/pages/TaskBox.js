@@ -1,30 +1,57 @@
 import styled from "styled-components";
 function TaskBox(props){ 
-    return (
-        <TaskBarBox id="task-bar">
-                <div className="project project-name">{props.projectName}</div>
-                <div className="project project-detail project-detail-cover">We need a process that will track the inventory and status of components in the chassis.
-                  It should accept IPC requests from the various cards, maintain an internal database of what's currently available,
-                  respond to IPC queries from other components and have a CLI interface so that we can query its contents. We will be
-                  adding capabilities above and beyond this in the future.
+    // function handleClick() { 
+    //     var allow_to_expand = true; 
+    //     var task_bar = document.querySelectorAll("#task-bar"); 
+    //     task_bar.forEach(taskBar =>{ 
+    //         if(allow_to_expand == true){
+    //             taskBar.addEventListener("click", function(){ 
+    //                 if(taskBar.classList.contains("barExpand")){ 
+    //                     taskBar.classList.remove("barExpand"); 
+    //                     taskBar.style.height = "50px"; 
+    //                     taskBar.children[1].classList.add("project-detail-cover")
+
+
+    //                 }else{
+    //                     taskBar.style.height = "100%"; 
+    //                     taskBar.classList.add("barExpand"); 
+    //                     taskBar.children[1].classList.remove("project-detail-cover")
+    //                 }
+
+
+    //             })
+    //         }
+    //     })
+
+    // }
+
+    //useState 
     
-                  </div>
-                  <div className="project project-due">Tomorrow</div>
-                  <div className="dot project project-priority" style={{backgroundColor: "rgb(177, 5, 66)"}}>1</div>
-                  <div className="project project-detail">
-                    <input type="checkbox" id="task-done" name="scales" checked=""/>
-                </div>      
-                <div id="task-belongs-to-user">
-                  <img src="./images/sheldon.jpg"alt="User Image"/>
-                </div>
-                <div id="task-belongs-to-username">
-                  <div id="">sheldcooper93</div>  
-                </div>
-                <div id="project-tags">
+
+
+
+
+    
+    return (
+        <TaskBarBoxRow id="task-bar">
+                <ProjectName className="project project-name">{props.projectName}</ProjectName>
+                <ProjectDetail className={"project project-detail project-detail-cover"}>{props.projectDetail}</ProjectDetail>
+                  <ProjectDue className="project project-due">{props.projectDue}</ProjectDue>
+                  <ProjectPriority className="dot project project-priority" style={{backgroundColor: "rgb(177, 5, 66)"}}>{props.projectPriority}</ProjectPriority>
+                  <ProjectChecker className="project project-detail">
+                    <input type="checkbox" id="task-done" name="scales" checked={props.projectChekced}/>
+                  </ProjectChecker>      
+                <TaskBelongToIcon id="task-belongs-to-user">
+                  <img src={props.projectLoggedInIcon} alt="User Image"/>
+                </TaskBelongToIcon>
+                <TaskBelongTo id="task-belongs-to-username">
+                  <div id="">{props.projectLoggedInUsername}</div>  
+                </TaskBelongTo>
+                <ProjectTag id="project-tags">
                   <button id="btn_tags" style={{backgroundColor: "rgb(255, 50, 0)"}} >Design</button>
                   <button id="btn_tags" style={{backgroundColor: "rgb(85, 255, 0)"}} >Develop</button>
-                </div>
-            </TaskBarBox>
+                </ProjectTag>
+            </TaskBarBoxRow>
         
 
         
@@ -34,7 +61,7 @@ function TaskBox(props){
 export default TaskBox; 
 
 // fix taks-bar > p   
-const TaskBarBox = styled.div`
+const TaskBarBoxRow = styled.div`
     width: 98%;
     height: 50px;
     background: linear-gradient(#474747, #272626,#000000);
@@ -52,3 +79,12 @@ const TaskBarBox = styled.div`
         padding-left: 50px; 
     }
 `
+
+const ProjectName = styled.div``
+const ProjectDetail = styled.div``
+const ProjectDue = styled.div``
+const ProjectPriority = styled.div``
+const ProjectChecker = styled.div``
+const ProjectTag = styled.div``
+const TaskBelongToIcon = styled.div``
+const TaskBelongTo = styled.div``

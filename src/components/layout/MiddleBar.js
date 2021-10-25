@@ -3,14 +3,14 @@ import TaskBox from "../pages/TaskBox";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'; 
 function MiddleBar(){ 
   return(
-     <div id="middle-bar">
+     <MiddleBarLayout id="middle-bar">
           <div id="top-bar">
             <div>
             <a href="/todo">
-              <Button>Tasks</Button>
+              <MenuButton>Tasks</MenuButton>
             </a> 
             <a href="/done">
-              <Button>Done</Button>
+              <MenuButton>Done</MenuButton>
             </a> 
             </div>
 
@@ -41,8 +41,31 @@ function MiddleBar(){
   <Router>
     <Switch> 
       <Route path="/todo">
-      <TaskBox projectName="Nodlehs"/>
-      <TaskBox projectName="Nodlehs"/>
+
+      <TaskBox 
+        projectName="Nodlehs"
+        projectDetail="We need a process that will track the inventory and status of components in the chassis.
+                  It should accept IPC requests from the various cards, maintain an internal database of what's currently available,
+                  respond to IPC queries from other components and have a CLI interface so that we can query its contents. We will be
+                  adding capabilities above and beyond this in the future."
+        projectDue="Tomorrow"
+        projectPriority="1"
+        projectChekced="true"
+        projectLoggedInIcon="./images/sheldon.jpg"
+        projectLoggedInUsername="sheldcooper93"
+        ProjectTag=""    // Make this array
+        />
+
+
+
+
+
+
+
+
+
+
+
       </Route>
     </Switch>
   </Router>
@@ -61,12 +84,13 @@ function MiddleBar(){
 
 
   
-    </div>
+    </MiddleBarLayout>
   );
 }
 
+const MiddleBarLayout = styled.div``
 
-const Button = styled.button`
+const MenuButton = styled.button`
   color: white;
   background: #4a0078;
   height: 50px;
