@@ -1,9 +1,13 @@
 import styled from "styled-components";
 import TaskBox from "../pages/TaskBox";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'; 
+import NavBar from "./NavbarLayout/NavBar";
+
 function MiddleBar(){ 
   return(
      <MiddleBarLayout id="middle-bar">
+      <NavBar />
+
           <div id="top-bar">
             <div>
             <a href="/todo">
@@ -18,8 +22,7 @@ function MiddleBar(){
 
 
           </div>
-
-          <div id="top-bar-detail">
+           <div id="top-bar-detail">
             <h6 className="col-title" style={{marginLeft: "2%"}}>Project Name</h6>
             <h6 className="col-title" style={{marginLeft: "14%"}}>Tasks Detail</h6>
             <h6 className="col-title" style={{marginLeft: "21%"}}>Due</h6>
@@ -35,7 +38,6 @@ function MiddleBar(){
             <h6 className="col-title" style={{marginLeft: "14%"}}>Allocated</h6>
             <h6 className="col-title" style={{marginLeft: "4%"}}>Tags</h6>
           </div>
-
 
 
   <Router>
