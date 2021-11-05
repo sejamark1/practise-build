@@ -33,7 +33,7 @@ function TaskBox(props){
 
     
     return (
-        <TaskBarBoxRow id="task-bar">
+        <UserTask id="task-bar">
                 <ProjectName className="project project-name">{props.projectName}</ProjectName>
                 <ProjectDetail className={"project project-detail project-detail-cover"}>{props.projectDetail}</ProjectDetail>
                   <ProjectDue className="project project-due">{props.projectDue}</ProjectDue>
@@ -51,7 +51,7 @@ function TaskBox(props){
                   <button id="btn_tags" style={{backgroundColor: "rgb(255, 50, 0)"}} >Design</button>
                   <button id="btn_tags" style={{backgroundColor: "rgb(85, 255, 0)"}} >Develop</button>
                 </ProjectTag>
-            </TaskBarBoxRow>
+            </UserTask>
         
 
         
@@ -61,7 +61,7 @@ function TaskBox(props){
 export default TaskBox; 
 
 // fix taks-bar > p   
-const TaskBarBoxRow = styled.div`
+const UserTask = styled.div`
     width: 98%;
     height: 50px;
     background: linear-gradient(#474747, #272626,#000000);

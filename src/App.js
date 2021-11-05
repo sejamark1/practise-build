@@ -1,6 +1,6 @@
 import React from "react";
 import MiddleBar from "./components/layout/MiddleBar"
-import SideBar from "./components/layout/SideBar"
+import SideBar from "./components/layout/SidebarLayout/SideBar"
 function App(){ 
     return(
         <div> 
