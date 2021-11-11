@@ -1,8 +1,7 @@
 import React from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'; 
 import styled from "styled-components";
-import DoneTask from './DoneTask';
-import ToDoTask from './ToDoTask';
+import AllTaskLists from './AllTaskLists';
 
 
 
@@ -18,13 +17,12 @@ function TaskBar() {
             <Router> 
                 <Switch> 
                 <Route path="/task/todo"> 
-                    <ToDoTask /> 
+                    <AllTaskLists projectCondition="false" /> 
                 </Route>
                 <Route path="/task/done"> 
-                    <DoneTask />
+                    <AllTaskLists projectCondition="true" /> 
                 </Route>
                 </Switch>
-            
             </Router>
             
 
