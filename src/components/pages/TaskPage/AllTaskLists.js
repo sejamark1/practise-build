@@ -20,7 +20,7 @@ const todoTask = [
     projectDue="Tomorrow"
     projectPriority="1"
     projectChekced="false"
-    projectLoggedInIcon="./images/sheldon.jpg"
+    projectLoggedInIcon="/images/sheldon.jpg"
     projectLoggedInUsername="sheldcooper93"
     ProjectTag=""    // Make this array
     />,
@@ -33,7 +33,7 @@ const todoTask = [
     projectDue="Tomorrow"
     projectPriority="1"
     projectChekced="false"
-    projectLoggedInIcon="./images/sheldon.jpg"
+    projectLoggedInIcon="/images/sheldon.jpg"
     projectLoggedInUsername="sheldcooper93"
     ProjectTag=""    // Make this array
     />,
@@ -46,7 +46,7 @@ const todoTask = [
     projectDue="Tomorrow"
     projectPriority="1"
     projectChekced="true"
-    projectLoggedInIcon="./images/sheldon.jpg"
+    projectLoggedInIcon="/images/sheldon.jpg"
     projectLoggedInUsername="sheldcooper93"
     ProjectTag=""    // Make this array
     />,
@@ -86,8 +86,8 @@ function AllTaskLists(props) {
          fetchData();
      }, [])
 
-     const fetchData = async() =>{ 
-        const response = await fetch("http://localhost:9000/api", {
+     const fetchData = async(data) =>{ 
+        const response = await fetch("http://localhost:9000/api", { // return promise
             method: "GET", 
             // mode: "no-cors", 
             headers: {
@@ -95,8 +95,10 @@ function AllTaskLists(props) {
             }, 
             body: JSON.stringify()
         })
-        console.log(response.users);
-        setBackendData(response);
+        const outcome = await response.json(); 
+        console.log(outcome.users);
+        //console.log(data);
+        setBackendData(outcome);
 
     }
   

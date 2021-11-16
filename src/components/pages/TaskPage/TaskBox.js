@@ -33,28 +33,31 @@ function TaskBox(props){
 
     
     return (
-        <UserTask id="task-bar">
-                <ProjectName className="project project-name">{props.projectName}</ProjectName>
-                <ProjectDetail className={"project project-detail project-detail-cover"}>{props.projectDetail}</ProjectDetail>
-                  <ProjectDue className="project project-due">{props.projectDue}</ProjectDue>
-                  <ProjectPriority className="dot project project-priority" style={{backgroundColor: "rgb(177, 5, 66)"}}>{props.projectPriority}</ProjectPriority>
-                  <ProjectChecker className="project project-detail">
-                    <input type="checkbox" id="task-done" name="scales" checked={props.projectChekced}/>
-                  </ProjectChecker>      
-                <TaskBelongToIcon id="task-belongs-to-user">
-                  <img src={props.projectLoggedInIcon} alt="User Image"/>
-                </TaskBelongToIcon>
-                <TaskBelongTo id="task-belongs-to-username">
-                  <div id="">{props.projectLoggedInUsername}</div>  
-                </TaskBelongTo>
-                <ProjectTag id="project-tags">
-                  <button id="btn_tags" style={{backgroundColor: "rgb(255, 50, 0)"}} >Design</button>
-                  <button id="btn_tags" style={{backgroundColor: "rgb(85, 255, 0)"}} >Develop</button>
-                </ProjectTag>
-            </UserTask>
-        
+       
+    <> 
+    
+    <UserTask id="task-bar old">
+        <div className="project project-name">{props.projectName}</div>
+        <div className={"project project-detail project-detail-cover"}>{props.projectDetail}</div>
+        <div className="project project-due">{props.projectDue}</div>
+        <div className="dot project project-priority" style={{backgroundColor: "rgb(177, 5, 66)"}}>{props.projectPriority}</div>
+        <div className="project project-detail">
+            <input type="checkbox" id="task-done" name="scales" checked={props.projectChekced}/>
+        </div>
+        <div id="task-belongs-to-user">
+            <img src={props.projectLoggedInIcon} alt="User Image"/>
+        </div>
+        <div id="task-belongs-to-username">
+            <div id="">{props.projectLoggedInUsername}</div>
+        </div>
+        <div id="project-tags">
+            <button id="btn_tags" style={{backgroundColor: "rgb(255, 50, 0)"}} >Design</button>
+            <button id="btn_tags" style={{backgroundColor: "rgb(85, 255, 0)"}} >Develop</button>
+        </div>
+    </UserTask>
 
-        
+   </>    
+
     ); 
 }
 
@@ -80,11 +83,4 @@ const UserTask = styled.div`
     }
 `
 
-const ProjectName = styled.div``
-const ProjectDetail = styled.div``
-const ProjectDue = styled.div``
-const ProjectPriority = styled.div``
-const ProjectChecker = styled.div``
-const ProjectTag = styled.div``
-const TaskBelongToIcon = styled.div``
-const TaskBelongTo = styled.div``
+
