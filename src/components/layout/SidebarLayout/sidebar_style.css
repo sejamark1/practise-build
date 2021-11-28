@@ -28,7 +28,7 @@
   
   }
   .p-name:hover{ 
-    font-size: 25px;
+    transform: scale(1.02);
     background: #351379;
   
   }

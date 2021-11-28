@@ -10,67 +10,52 @@ import { useState, useEffect } from 'react';
 // put it in to TaskBox Array 
 // 
 
-const todoTask = [
-    <TaskBox 
-    projectName="Nodlehs"
-    projectDetail="We need a process that will track the inventory and status of components in the chassis.
-              It should accept IPC requests from the various cards, maintain an internal database of what's currently available,
-              respond to IPC queries from other components and have a CLI interface so that we can query its contents. We will be
-              adding capabilities above and beyond this in the future."
-    projectDue="Tomorrow"
-    projectPriority="1"
-    projectChekced="false"
-    projectLoggedInIcon="/images/sheldon.jpg"
-    projectLoggedInUsername="sheldcooper93"
-    ProjectTag=""    // Make this array
-    />,
-    <TaskBox 
-    projectName="Nodlehs"
-    projectDetail="We need a process that will track the inventory and status of components in the chassis.
-              It should accept IPC requests from the various cards, maintain an internal database of what's currently available,
-              respond to IPC queries from other components and have a CLI interface so that we can query its contents. We will be
-              adding capabilities above and beyond this in the future."
-    projectDue="Tomorrow"
-    projectPriority="1"
-    projectChekced="false"
-    projectLoggedInIcon="/images/sheldon.jpg"
-    projectLoggedInUsername="sheldcooper93"
-    ProjectTag=""    // Make this array
-    />,
-    <TaskBox 
-    projectName="Nodlehs"
-    projectDetail="We need a process that will track the inventory and status of components in the chassis.
-              It should accept IPC requests from the various cards, maintain an internal database of what's currently available,
-              respond to IPC queries from other components and have a CLI interface so that we can query its contents. We will be
-              adding capabilities above and beyond this in the future."
-    projectDue="Tomorrow"
-    projectPriority="1"
-    projectChekced="true"
-    projectLoggedInIcon="/images/sheldon.jpg"
-    projectLoggedInUsername="sheldcooper93"
-    ProjectTag=""    // Make this array
-    />,
+
+
+function returnTaskBox(pName, tDetail,tDue, tPriority,tChecked,tLIcon, tLIUser, tTag){ 
+    return <TaskBox 
+    projectName={pName}
+    taskDetail={tDetail}
+    taskDue={tDue}
+    taskPriority={tPriority}
+    taskChekced={tChecked}
+    taskLoggedInIcon={tLIcon}
+    taskLoggedInUsername={tLIUser}
+    taskTag={tTag}    // Make this array
+    />
+
+}
+
+const todoTask = []
+
+
+function addTodoTask(outcome){
+    // for(var i = 0; i < outcome.length; i++){ 
+    //     const o = outcome[i]
+    //     todoTask.push(returnTaskBox(o.data[0], o.data[1], o.data[2], o.data[3], o.data[4], o.data[5], o.data[6], o.data[7]))
+    // }
+
+    for(var i = 0; i < outcome.length; i++){ 
+        const o = outcome[i]
+        todoTask.push(returnTaskBox(o.projectName, o.taskDetail, o.taskDue, o.taskPriority, (o.taskStatus==0 ? "false" : "true"), "./sheldon.jpg", o.username, o.taskTags))
+        console.log(todoTask);
+    }
+    
     
 
-
-]
-
-
-
-
-
-
-
-function printTask(condition){
-
-    
+}
+// Based on the conditon given (for projectChekced in each task ) that task will be printed. 
+// It will be printed based on todo/done.
+function printTask(condition){ 
     var item = []; 
+    // Get the task detail from todoTask and push it to item for it to print later.
     todoTask.forEach(todo=>{ 
-        if(todo.props.projectChekced===condition){ 
+        if(todo.props.taskChekced===condition){ 
             item.push(todo); 
         }
     }); 
 
+    // return printed task. 
     return item.map(todo=>todo); 
     
 }
@@ -82,12 +67,13 @@ function printTask(condition){
 function AllTaskLists(props) {
   
     const [backenddata, setBackendData] = useState([{}]); 
+
      useEffect(() => { 
          fetchData();
      }, [])
 
      const fetchData = async(data) =>{ 
-        const response = await fetch("http://localhost:9000/api", { // return promise
+        const response = await fetch("http://localhost:9000/api/user_task_data", { // return promise
             method: "GET", 
             // mode: "no-cors", 
             headers: {
@@ -96,8 +82,9 @@ function AllTaskLists(props) {
             body: JSON.stringify()
         })
         const outcome = await response.json(); 
-        console.log(outcome.users);
-        //console.log(data);
+        console.log(outcome);
+        addTodoTask(outcome);
+        //console.log(outcome[0].data[1]);
         setBackendData(outcome);
 
     }
@@ -106,14 +93,9 @@ function AllTaskLists(props) {
     return (
         <div>
         {/* Get data from API  */}
-        {typeof backenddata.users === "undefined" ? (
-            <p> Loading... </p>
-        ): (
-            backenddata.users.map((user, i) => (
-                <p key={i}>{user} </p>
-            ))
-        )}
-        {printTask(props.projectCondition)}
+
+        
+        {printTask(props.taskCondition)}
 
 
 

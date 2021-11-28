@@ -17,10 +17,10 @@ function TaskBar() {
             <Router> 
                 <Switch> 
                 <Route path="/task/todo"> 
-                    <AllTaskLists projectCondition="false" /> 
+                    <AllTaskLists taskCondition="false" /> 
                 </Route>
                 <Route path="/task/done"> 
-                    <AllTaskLists projectCondition="true" /> 
+                    <AllTaskLists taskCondition="true" /> 
                 </Route>
                 </Switch>
             </Router>
@@ -56,20 +56,20 @@ function TaskBarDetail(){
     return(
       <div id="top-bar-detail">
         <h6 className="col-title" style={{marginLeft: "2%"}}>Project Name</h6>
-            <h6 className="col-title" style={{marginLeft: "14%"}}>Tasks Detail</h6>
-            <h6 className="col-title" style={{marginLeft: "21%"}}>Due</h6>
-            <h6 className="col-title filter-priority" style={{marginLeft: "9%"}}>Priority
+            <h6 className="col-title" style={{marginLeft: "14%"}}>Tasks Detail</h6>
+            <h6 className="col-title" style={{marginLeft: "21%"}}>Due</h6>
+            <h6 className="col-title filter-priority" style={{marginLeft: "9%"}}>Priority
 {/*             <div className="priority_dropdown">
             <button className="priority-number">1</button>
             <button className="priority-number">2</button>
             <button className="priority-number">3</button>
             <button className="priority-number">All</button>
            </div> */}
-          </h6>
-        <h6 className="col-title" style={{marginLeft: "11%"}}>Status</h6>
-        <h6 className="col-title" style={{marginLeft: "14%"}}>Allocated</h6>
-        <h6 className="col-title" style={{marginLeft: "4%"}}>Tags</h6>
-        </div>
+            </h6>
+            <h6 className="col-title" style={{marginLeft: "11%"}}>Status</h6>
+            <h6 className="col-title" style={{marginLeft: "14%"}}>Allocated</h6>
+            <h6 className="col-title" style={{marginLeft: "4%"}}>Tags</h6>
+    </div>
 
     )
 }

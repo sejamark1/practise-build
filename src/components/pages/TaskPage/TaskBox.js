@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useState, useEffect } from "react";
 function TaskBox(props){ 
     // function handleClick() { 
     //     var allow_to_expand = true; 
@@ -28,27 +29,31 @@ function TaskBox(props){
     //useState 
     
 
-
-
+    // Change width of UserTask to 50% when clicked. And Vice versa.  
 
     
+    
+    
+    
+    //TODO: Rename the css to match what each of these elements are. 
+    //TODO: Use Js effect on these html below. 
     return (
        
     <> 
     
-    <UserTask id="task-bar old">
+    <UserTask id="task-bar">
         <div className="project project-name">{props.projectName}</div>
-        <div className={"project project-detail project-detail-cover"}>{props.projectDetail}</div>
-        <div className="project project-due">{props.projectDue}</div>
-        <div className="dot project project-priority" style={{backgroundColor: "rgb(177, 5, 66)"}}>{props.projectPriority}</div>
+        <div className={"project project-detail project-detail-cover"}>{props.taskDetail}</div>
+        <div className="project project-due">{props.taskDue}</div>
+        <div className="dot project project-priority" style={{backgroundColor: "rgb(177, 5, 66)"}}>{props.taskPriority}</div>
         <div className="project project-detail">
-            <input type="checkbox" id="task-done" name="scales" checked={props.projectChekced}/>
+            <input type="checkbox" id="task-done" name="scales" checked={props.taskChekced}/>
         </div>
         <div id="task-belongs-to-user">
-            <img src={props.projectLoggedInIcon} alt="User Image"/>
+            <img src={props.taskLoggedInIcon} alt="User Image"/>
         </div>
         <div id="task-belongs-to-username">
-            <div id="">{props.projectLoggedInUsername}</div>
+            <div id="">{props.taskLoggedInUsername}</div>
         </div>
         <div id="project-tags">
             <button id="btn_tags" style={{backgroundColor: "rgb(255, 50, 0)"}} >Design</button>
@@ -80,6 +85,9 @@ const UserTask = styled.div`
     &.p{ 
         color: green;
         padding-left: 50px; 
+    }
+    &:hover{ 
+        transform: scale(1.02);
     }
 `
 
