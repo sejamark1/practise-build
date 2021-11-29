@@ -42,10 +42,16 @@ function TaskTopBar(){
     <div id="top-bar">
         <div>
             <a href="/task/todo">
-            <MenuButton>Tasks</MenuButton>
+            <MenuButton>
+                <img src="\images\todotask.png"/>
+                Tasks
+            </MenuButton>
             </a> 
             <a href="/task/done">
-            <MenuButton>Done</MenuButton>
+            <MenuButton>
+                <img src="\images\done.png"/>
+                Done
+            </MenuButton>
             </a> 
         </div> 
     </div>
@@ -88,6 +94,13 @@ const MenuButton = styled.button`
   border-radius: 5px;
   margin: 5px 0 0 10px;
   cursor: pointer;
+  img { 
+    height: 20px;
+    position: absolute;
+    margin-left: -26px;
+    margin-top: -1px;
+    color: white;
+  }
 `
 
 export default TaskBar;

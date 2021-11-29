@@ -61,7 +61,21 @@
     width: 100%;
   
   }
-  
+  #addIcon{ 
+    height: 70px;
+    width: 70px;
+    background: red;
+    font-size: 50px;
+    text-align: center;
+    border-radius: 100%;
+    outline: none;
+    user-select: none;
+    position: absolute;
+    right: 50px;
+    bottom: 20px;
+    padding-top: 5px;
+    cursor: pointer;
+  }
   
   #task-done{ 
     height: 20px;
