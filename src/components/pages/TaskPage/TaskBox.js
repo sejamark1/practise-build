@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+import PromptBox from "../../layout/PromptBoxLayout/PromptBox";
+
+
 function TaskBox(props){ 
     // function handleClick() { 
     //     var allow_to_expand = true; 
@@ -32,7 +35,7 @@ function TaskBox(props){
     // Change width of UserTask to 50% when clicked. And Vice versa.  
 
     
-    
+
     
     
     //TODO: Rename the css to match what each of these elements are. 
@@ -49,9 +52,6 @@ function TaskBox(props){
         <div className="project project-detail">
             <input type="checkbox" id="task-done" name="scales" checked={props.taskChekced}/>
         </div>
-        <div id="task-belongs-to-user">
-            <img src={props.taskLoggedInIcon} alt="User Image"/>
-        </div>
         <div id="task-belongs-to-username">
             <div id="">{props.taskLoggedInUsername}</div>
         </div>
@@ -59,8 +59,13 @@ function TaskBox(props){
             <button id="btn_tags" style={{backgroundColor: "rgb(255, 50, 0)"}} >Design</button>
             <button id="btn_tags" style={{backgroundColor: "rgb(85, 255, 0)"}} >Develop</button>
         </div>
+        <div id="project-tags">
+            <img class="btn_delete" src="/images/delete.png"/>
+            
+        </div>
     </UserTask>
 
+    
    </>    
 
     ); 

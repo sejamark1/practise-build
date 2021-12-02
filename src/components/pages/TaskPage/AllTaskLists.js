@@ -6,20 +6,20 @@ import { useState, useEffect } from 'react';
 
 
 
+
 // Collect the task 
 // put it in to TaskBox Array 
 // 
 
 
 
-function returnTaskBox(pName, tDetail,tDue, tPriority,tChecked,tLIcon, tLIUser, tTag){ 
+function returnTaskBox(pName, tDetail,tDue, tPriority,tChecked, tLIUser, tTag){ 
     return <TaskBox 
     projectName={pName}
     taskDetail={tDetail}
     taskDue={tDue}
     taskPriority={tPriority}
     taskChekced={tChecked}
-    taskLoggedInIcon={tLIcon}
     taskLoggedInUsername={tLIUser}
     taskTag={tTag}    // Make this array
     />
@@ -37,7 +37,7 @@ function addTodoTask(outcome){
 
     for(var i = 0; i < outcome.length; i++){ 
         const o = outcome[i]
-        todoTask.push(returnTaskBox(o.projectName, o.taskDetail, o.taskDue, o.taskPriority, (o.taskStatus==0 ? "false" : "true"), "./sheldon.jpg", o.username, o.taskTags))
+        todoTask.push(returnTaskBox(o.projectName, o.taskDetail, o.taskDue, o.taskPriority, (o.taskStatus==0 ? "false" : "true"), o.username, o.taskTags))
         console.log(todoTask);
     }
     
@@ -97,7 +97,7 @@ function AllTaskLists(props) {
         
         {printTask(props.taskCondition)}
 
-
+        
 
                                
         </div>

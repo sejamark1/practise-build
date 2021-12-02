@@ -23,7 +23,8 @@ body{
   background: radial-gradient(#545454, black);
   position: absolute;
   left: 10%;
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 

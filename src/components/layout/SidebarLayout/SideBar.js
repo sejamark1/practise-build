@@ -1,6 +1,5 @@
 import React, {useState, useRef} from "react";
 
-
 function SideBar(props){ 
     const loggedInUserButton = useRef();
     // Toggle between showing Logout and account button based on clicks on userIcon.
