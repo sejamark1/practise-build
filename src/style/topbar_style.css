@@ -30,3 +30,9 @@
     transition: visibility 0s, opacity 0.5s linear;
 
 }
+
+@media only screen and (max-width: 1000px){
+    #top-bar-detail {
+        display: none;
+    }
+}

@@ -23,13 +23,13 @@ task_bar.forEach(taskBar =>{
             if(taskBar.classList.contains("barExpand")){ 
                 taskBar.classList.remove("barExpand"); 
                 taskBar.style.height = "50px"; 
-                taskBar.children[1].classList.add("project-detail-cover")
+                taskBar.children[1].classList.add("task-detail-cover")
 
 
             }else{
                 taskBar.style.height = "100%"; 
                 taskBar.classList.add("barExpand"); 
-                taskBar.children[1].classList.remove("project-detail-cover")
+                taskBar.children[1].classList.remove("task-detail-cover")
             }
 
 
@@ -84,7 +84,7 @@ priority_number.forEach(pfn =>{
 
 
 // Change colour based on number 
-var priority = document.querySelectorAll(".project-priority"); 
+var priority = document.querySelectorAll(".task-priority"); 
 
 const colour = { 
     RED: "#B10542", 

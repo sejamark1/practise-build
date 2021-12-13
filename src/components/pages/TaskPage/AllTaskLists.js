@@ -10,11 +10,14 @@ import { useState, useEffect } from 'react';
 // Collect the task 
 // put it in to TaskBox Array 
 // 
+function keyCon(){ 
+    console.log(this); 
+}
 
 
-
-function returnTaskBox(pName, tDetail,tDue, tPriority,tChecked, tLIUser, tTag){ 
-    return <TaskBox 
+function returnTaskBox(tid, pName, tDetail,tDue, tPriority,tChecked, tLIUser, tTag){ 
+    return <TaskBox key={tid} onClick={()=> console.log(tid)}
+    uniqueKey={tid}
     projectName={pName}
     taskDetail={tDetail}
     taskDue={tDue}
@@ -37,7 +40,8 @@ function addTodoTask(outcome){
 
     for(var i = 0; i < outcome.length; i++){ 
         const o = outcome[i]
-        todoTask.push(returnTaskBox(o.projectName, o.taskDetail, o.taskDue, o.taskPriority, (o.taskStatus==0 ? "false" : "true"), o.username, o.taskTags))
+        console.log(o);
+        todoTask.push(returnTaskBox(o.taskId, o.projectName, o.taskDetail, o.taskDue, o.taskPriority, (o.taskStatus==0 ? "false" : "true"), o.username, o.taskTags))
         console.log(todoTask);
     }
     
@@ -82,7 +86,6 @@ function AllTaskLists(props) {
             body: JSON.stringify()
         })
         const outcome = await response.json(); 
-        console.log(outcome);
         addTodoTask(outcome);
         //console.log(outcome[0].data[1]);
         setBackendData(outcome);

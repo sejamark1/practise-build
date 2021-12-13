@@ -6,8 +6,9 @@ import "./navbar_style.css";
 function NavBar() {
     return (
       <div id="navbar">
-       <a href="/home"> <button id="nav_button">Home</button> </a>
-       <a href="/task"> <button id="nav_button">Task</button> </a>
+      <ExpandImage href=""> <button id="nav_button"><img src="/images/expand.png"/></button> </ExpandImage>
+      <a href="/home"> <button id="nav_button">Home</button> </a>
+      <a href="/task"> <button id="nav_button">Task</button> </a>
        <a href="/home"> <button id="nav_button">Chat</button> </a>
        <a href="/home"> <button id="nav_button">Contact</button> </a>
 
@@ -16,6 +17,15 @@ function NavBar() {
     );
   }
   
+const ExpandImage = styled.a`
+  button{ 
+    display: none
+  }
+  img{
+    height: 20px;
+    margin: -4px;
+  }
+`
 export default NavBar; 
 
   

@@ -37,7 +37,7 @@ function AddTask() {
                         <textarea name="taskDetail" type="text" id="addtask_taskDetail" placeholder="Detail..."/> <br />
                     </label><br /> 
 
-                    <input id="btn_add_task_submit" type="submit" value="Add"/>
+                    <a href="/task/todo"><input id="btn_add_task_submit" type="submit" value="Add" /></a>
 
                 </div>           
             </form>

@@ -13,13 +13,13 @@ function TaskBox(props){
     //                 if(taskBar.classList.contains("barExpand")){ 
     //                     taskBar.classList.remove("barExpand"); 
     //                     taskBar.style.height = "50px"; 
-    //                     taskBar.children[1].classList.add("project-detail-cover")
+    //                     taskBar.children[1].classList.add("task-detail-cover")
 
 
     //                 }else{
     //                     taskBar.style.height = "100%"; 
     //                     taskBar.classList.add("barExpand"); 
-    //                     taskBar.children[1].classList.remove("project-detail-cover")
+    //                     taskBar.children[1].classList.remove("task-detail-cover")
     //                 }
 
 
@@ -37,19 +37,23 @@ function TaskBox(props){
     
 
     
+
+    function keyCon(){ 
+        console.log(props.uniqueKey); 
+    }
     
-    //TODO: Rename the css to match what each of these elements are. 
     //TODO: Use Js effect on these html below. 
+    //TODO: add effect on react js. 
     return (
        
     <> 
     
-    <UserTask id="task-bar">
+    <UserTask className="" id="task-bar" > 
         <div className="project project-name">{props.projectName}</div>
-        <div className={"project project-detail project-detail-cover"}>{props.taskDetail}</div>
-        <div className="project project-due">{props.taskDue}</div>
-        <div className="dot project project-priority" style={{backgroundColor: "rgb(177, 5, 66)"}}>{props.taskPriority}</div>
-        <div className="project project-detail">
+        <div className={"project task-detail task-detail-cover"}>{props.taskDetail}</div>
+        <div className="project task-due">{props.taskDue}</div>
+        <div className="dot project task-priority" style={{backgroundColor: "rgb(177, 5, 66)"}}>{props.taskPriority}</div>
+        <div className="project task-check">
             <input type="checkbox" id="task-done" name="scales" checked={props.taskChekced}/>
         </div>
         <div id="task-belongs-to-username">
@@ -59,10 +63,12 @@ function TaskBox(props){
             <button id="btn_tags" style={{backgroundColor: "rgb(255, 50, 0)"}} >Design</button>
             <button id="btn_tags" style={{backgroundColor: "rgb(85, 255, 0)"}} >Develop</button>
         </div>
-        <div id="project-tags">
-            <img class="btn_delete" src="/images/delete.png"/>
-            
-        </div>
+        <form id="btn_task_delete" action="/deletetask" method="post">
+        <a href="/task/todo"> <button  name="UniqueKey" value={props.uniqueKey} onClick={keyCon} type="submit"> <img type="submit"  class="btn_delete" src="/images/delete.png"/> </button> </a>
+        </form>
+
+
+        
     </UserTask>
 
     
