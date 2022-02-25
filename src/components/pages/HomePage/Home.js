@@ -1,4 +1,5 @@
 import React from 'react'; 
+import Project from './Project';
 import './homestyle.css'
 
 
@@ -6,8 +7,9 @@ import './homestyle.css'
 function Home(){ 
     return(
 
-        <div>
-            asdfasdf
+        <div id="home">
+            <Project pName="Nodlehs" due="50" />
+            <Project pName="Sputnix" due="40" />
         </div> 
 
 

@@ -4,6 +4,7 @@ import NavBar from "./NavbarLayout/NavBar";
 import Home from "../pages/HomePage/Home";
 import TaskBar from "../pages/TaskPage/TaskBar";
 import AddTask from "../pages/AddTaskPage/AddTask";
+import Login from "../pages/LoginPage/Login";
 
 
 function MiddleBar(){ 
@@ -13,6 +14,7 @@ function MiddleBar(){
 
     <Router>
       <Switch> 
+
       <Route path="/home">
           <Home />
       </Route>

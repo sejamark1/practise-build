@@ -4,17 +4,7 @@ import { useState, useEffect } from 'react';
 
 
 
-
-
-
-// Collect the task 
-// put it in to TaskBox Array 
-// 
-function keyCon(){ 
-    console.log(this); 
-}
-
-
+//RETURN a TaskBox with relavent data. 
 function returnTaskBox(tid, pName, tDetail,tDue, tPriority,tChecked, tLIUser, tTag){ 
     return <TaskBox key={tid} onClick={()=> console.log(tid)}
     uniqueKey={tid}
@@ -24,48 +14,36 @@ function returnTaskBox(tid, pName, tDetail,tDue, tPriority,tChecked, tLIUser, tT
     taskPriority={tPriority}
     taskChekced={tChecked}
     taskLoggedInUsername={tLIUser}
-    taskTag={tTag}    // Make this array
+    taskTag={tTag}  
     />
 
 }
 
-const todoTask = []
-
-
+// All the task fetched  pushed here in <TaskBox> Component. 
+const todoTask = []; 
+// Adds ALL task data to todoTask. CALLED FROM: AllTaskLists-/it fetches data/
 function addTodoTask(outcome){
-    // for(var i = 0; i < outcome.length; i++){ 
-    //     const o = outcome[i]
-    //     todoTask.push(returnTaskBox(o.data[0], o.data[1], o.data[2], o.data[3], o.data[4], o.data[5], o.data[6], o.data[7]))
-    // }
-
     for(var i = 0; i < outcome.length; i++){ 
         const o = outcome[i]
-        console.log(o);
         todoTask.push(returnTaskBox(o.taskId, o.projectName, o.taskDetail, o.taskDue, o.taskPriority, (o.taskStatus==0 ? "false" : "true"), o.username, o.taskTags))
-        console.log(todoTask);
     }
-    
-    
-
 }
-// Based on the conditon given (for projectChekced in each task ) that task will be printed. 
-// It will be printed based on todo/done.
+
+//Based on conditon (projectChecked), it is filter and add to item array. Then <TaskBox> Component is printed. 
 function printTask(condition){ 
-    var item = []; 
-    // Get the task detail from todoTask and push it to item for it to print later.
-    todoTask.forEach(todo=>{ 
-        if(todo.props.taskChekced===condition){ 
-            item.push(todo); 
-        }
-    }); 
-
-    // return printed task. 
+    var item = todoTask.filter(todo => todo.props.taskChekced===condition); 
     return item.map(todo=>todo); 
-    
 }
 
-
-
+// DON'T NEED
+function displayData(taskCondition, backenddata) { // you can't access the props directly from a funciton, so parse it shall be. 
+    if(backenddata.length < 0){ 
+        <p>Loading </p>
+    }else{ 
+        printTask(taskCondition)
+        
+    }
+}
 
 
 function AllTaskLists(props) {
@@ -83,26 +61,22 @@ function AllTaskLists(props) {
             headers: {
                 'Content-type' : "application/json"
             }, 
-            body: JSON.stringify()
+            body: JSON.stringify() // creeat obj of form 
         })
         const outcome = await response.json(); 
         addTodoTask(outcome);
-        //console.log(outcome[0].data[1]);
-        setBackendData(outcome);
+        setBackendData(outcome); // If any changes occur in backEndData, then all related to this will go through a change. 
 
     }
   
 
     return (
-        <div>
-        {/* Get data from API  */}
+        <div>  
 
-        
-        {printTask(props.taskCondition)}
+            {backenddata.length < 0 ? <p>Loading </p> :printTask(props.taskCondition)}
 
-        
 
-                               
+
         </div>
     )
 }

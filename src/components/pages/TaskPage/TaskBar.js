@@ -46,7 +46,7 @@ function TaskTopBar(){
             <a href="/task/todo">
             <MenuButton>
                 <img src="\images\todotask.png"/>
-                Tasks
+                Todo
             </MenuButton>
             </a> 
             <a href="/task/done">

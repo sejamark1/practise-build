@@ -38,10 +38,30 @@ function TaskBox(props){
 
     
 
-    function keyCon(){ 
-        console.log(props.uniqueKey); 
-    }
+function deleteTaskBox(){ 
+    fetch(`http://localhost:9000/api/deletetask/${props.uniqueKey}`, {
+        method: "DELETE"
+    }).then((result)=> { 
+        console.log(result);    
+        
+
+        result.json().then((resp)=>{ 
+        })
+    })
     
+    
+}
+
+
+function updateStatus(){ 
+
+}
+    
+
+
+function graeme(){ 
+    console.log("Graeme"); 
+}
     //TODO: Use Js effect on these html below. 
     //TODO: add effect on react js. 
     return (
@@ -54,7 +74,7 @@ function TaskBox(props){
         <div className="project task-due">{props.taskDue}</div>
         <div className="dot project task-priority" style={{backgroundColor: "rgb(177, 5, 66)"}}>{props.taskPriority}</div>
         <div className="project task-check">
-            <input type="checkbox" id="task-done" name="scales" checked={props.taskChekced}/>
+            <input type="checkbox" id="task-done" name="scales" onClick={updateStatus} checked={props.taskChekced}/>
         </div>
         <div id="task-belongs-to-username">
             <div id="">{props.taskLoggedInUsername}</div>
@@ -63,10 +83,10 @@ function TaskBox(props){
             <button id="btn_tags" style={{backgroundColor: "rgb(255, 50, 0)"}} >Design</button>
             <button id="btn_tags" style={{backgroundColor: "rgb(85, 255, 0)"}} >Develop</button>
         </div>
-        <form id="btn_task_delete" action="/deletetask" method="post">
-        <a href="/task/todo"> <button  name="UniqueKey" value={props.uniqueKey} onClick={keyCon} type="submit"> <img type="submit"  class="btn_delete" src="/images/delete.png"/> </button> </a>
-        </form>
 
+ 
+
+        <button  name="UniqueKey" value={props.uniqueKey} onClick={deleteTaskBox} type="submit"> <img class="btn_delete" src="/images/delete.png"/> </button>
 
         
     </UserTask>
@@ -103,3 +123,7 @@ const UserTask = styled.div`
 `
 
 
+/// <form id="btn_task_delete" action="/deletetask" method="post">
+// // onClick=sendDelFunc();
+// <a href="/task/todo"> <button  name="UniqueKey" value={props.uniqueKey} onClick={keyCon} type="submit"> <img type="submit"  class="btn_delete" src="/images/delete.png"/> </button> </a>
+// </form>
