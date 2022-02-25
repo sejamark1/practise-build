@@ -44,6 +44,7 @@ function deleteTaskBox(){
     }).then((result)=> { 
         console.log(result);    
         
+        
 
         result.json().then((resp)=>{ 
         })
