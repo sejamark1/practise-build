@@ -27,10 +27,6 @@ function MiddleBar(){
       </Switch>
     </Router>
 
-    <div id="progress-measure">
-      <label style={{color: "white"}} for="Progress">Progress 17%</label>
-      <meter id="progress-meter" value="1" min="0" max="6"></meter><br/>
-    </div>
     <a href="/add-task">
       <button  id="addIcon"> + </button>
     </a> 

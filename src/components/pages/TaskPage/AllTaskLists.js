@@ -27,6 +27,7 @@ function returnTaskBox(tid, pName, tDetail,tDue, tPriority,tChecked, tLIUser, tT
 
 // All the task fetched  pushed here in <TaskBox> Component. 
 const todoTask = []; 
+var item = [];
 // Adds ALL task data to todoTask. CALLED FROM: AllTaskLists-/it fetches data/
 function addTodoTask(outcome){
     for(var i = 0; i < outcome.length; i++){ 
@@ -37,7 +38,10 @@ function addTodoTask(outcome){
 
 //Based on conditon (projectChecked), it is filter and add to item array. Then <TaskBox> Component is printed. 
 function printTask(condition){ 
-    var item = todoTask.filter(todo => todo.props.taskChekced===condition); 
+    console.log(todoTask.length); 
+    item = todoTask.filter(todo => todo.props.taskChekced===condition); 
+    console.log(item.length); 
+
     return item.map(todo=>todo); 
 }
 
@@ -53,7 +57,8 @@ function displayData(taskCondition, backenddata) { // you can't access the props
 
 
 function AllTaskLists(props) {
-  
+
+    
     const [backenddata, setBackendData] = useState([{}]); 
 
      useEffect(() => { 
@@ -80,7 +85,13 @@ function AllTaskLists(props) {
         <div>  
 
             {backenddata.length < 0 ? <p>Loading </p> :printTask(props.taskCondition)}
-
+            {props.taskCondition == "false" ? 
+            <div id="progress-measure">
+                <label style={{color: "white"}} for="Progress">Progress {Math.round(100 - ((item.length/todoTask.length) * 100))}% Done </label>
+                <meter id="progress-meter" value={todoTask.length - item.length} min="0" max={todoTask.length}></meter><br/>
+            </div> : 
+            ""
+                    }
 
 
         </div>
@@ -92,3 +103,5 @@ function AllTaskLists(props) {
 
 export default AllTaskLists;
 
+// if props.taskconditon  == ture show the progress_measure 
+ 

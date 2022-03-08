@@ -40,6 +40,7 @@ function updateStatus(){
     }).then((result)=> { 
         console.log(result);    
         result.json().then((resp)=>{ 
+
         })
     })
     window.location.reload();
