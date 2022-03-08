@@ -1,1 +1,44 @@
+#login_container{ 
+    height: 500px;
+    width: 400px;
+    background: red;
+    margin: 200px auto;
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(5,3,3,1) 55%, rgba(8,8,8,1) 100%);
+}
 
+
+#top > h1{ 
+    color: white;
+    text-align: center;
+    padding-top: 10px;
+}
+ p{ 
+    color: grey;
+    text-align: center;
+    padding-top: 10px;
+    
+}
+
+.form-control{ 
+    color: white;
+    background: none;
+    outline: 1px solid white;
+    width: 80%;
+    padding-left: 22px;
+    margin-left: 45px;
+}
+
+::-webkit-input-placeholder{ 
+    color: white;
+}
+
+.login_btn{ 
+    background: none;
+    outline: 1px solid white;
+    color: white;
+    border: none;
+    height: 40px;
+    width: 100px;
+    margin-left: 156px;
+    cursor: pointer;
+}

@@ -3,38 +3,18 @@ import { useState, useEffect } from "react";
 import PromptBox from "../../layout/PromptBoxLayout/PromptBox";
 
 
+
 function TaskBox(props){ 
-    // function handleClick() { 
-    //     var allow_to_expand = true; 
-    //     var task_bar = document.querySelectorAll("#task-bar"); 
-    //     task_bar.forEach(taskBar =>{ 
-    //         if(allow_to_expand == true){
-    //             taskBar.addEventListener("click", function(){ 
-    //                 if(taskBar.classList.contains("barExpand")){ 
-    //                     taskBar.classList.remove("barExpand"); 
-    //                     taskBar.style.height = "50px"; 
-    //                     taskBar.children[1].classList.add("task-detail-cover")
+    const [taskBoxExpander, setTaskBoxExpander] = useState("deactive-expand"); 
+    const [showTaskDetail, setShowTaskDetail] = useState("task-detail-cover")
 
-
-    //                 }else{
-    //                     taskBar.style.height = "100%"; 
-    //                     taskBar.classList.add("barExpand"); 
-    //                     taskBar.children[1].classList.remove("task-detail-cover")
-    //                 }
-
-
-    //             })
-    //         }
-    //     })
-
-    // }
-
-    //useState 
-    
 
     // Change width of UserTask to 50% when clicked. And Vice versa.  
 
-    
+    //TODO: 
+        // I need to click on taskbox DIV and make .task-detail-cover text-overflow: revert
+
+
 
     
 
@@ -43,39 +23,62 @@ function deleteTaskBox(){
         method: "DELETE"
     }).then((result)=> { 
         console.log(result);    
-        
-        
-
         result.json().then((resp)=>{ 
         })
     })
+    window.location.reload();
+
+
     
     
 }
 
 
 function updateStatus(){ 
+    fetch(`http://localhost:9000/api/updatestatus/${props.uniqueKey}/${props.taskChekced}`, {
+        method: "put"
+    }).then((result)=> { 
+        console.log(result);    
+        result.json().then((resp)=>{ 
+        })
+    })
+    window.location.reload();
+
 
 }
     
+function expandTaskBox() { 
+    if(taskBoxExpander == "active-expand"){ 
+        setTaskBoxExpander("deactive-expand");
+        setShowTaskDetail("task-detail-cover")
+    }else{ 
+        setTaskBoxExpander("active-expand");
+        setShowTaskDetail("task-detail-show")
 
-
-function graeme(){ 
-    console.log("Graeme"); 
+    }
 }
+
+
+
     //TODO: Use Js effect on these html below. 
     //TODO: add effect on react js. 
     return (
        
     <> 
+ 
     
-    <UserTask className="" id="task-bar" > 
+    
+    
+    <UserTask className={"task-bar " + taskBoxExpander} id="task-bar" > 
         <div className="project project-name">{props.projectName}</div>
-        <div className={"project task-detail task-detail-cover"}>{props.taskDetail}</div>
+        <div onClick={expandTaskBox} className={"project task-detail " + showTaskDetail}>{props.taskDetail}</div>
         <div className="project task-due">{props.taskDue}</div>
-        <div className="dot project task-priority" style={{backgroundColor: "rgb(177, 5, 66)"}}>{props.taskPriority}</div>
+        <div style={{"width": "5%"}}> 
+            <div className="dot project task-priority" style={{backgroundColor: "rgb(177, 5, 66)"}}> {props.taskPriority}</div>
+        </div>
         <div className="project task-check">
-            <input type="checkbox" id="task-done" name="scales" onClick={updateStatus} checked={props.taskChekced}/>
+            {props.taskChekced=="true" ? 
+                <input type="checkbox" id="task-done" name="scales" onClick={updateStatus}  checked/> : <input type="checkbox" id="task-done" name="scales" onClick={updateStatus}/> }
         </div>
         <div id="task-belongs-to-username">
             <div id="">{props.taskLoggedInUsername}</div>
@@ -87,7 +90,7 @@ function graeme(){
 
  
 
-        <button  name="UniqueKey" value={props.uniqueKey} onClick={deleteTaskBox} type="submit"> <img class="btn_delete" src="/images/delete.png"/> </button>
+        <button id="del_button"  name="UniqueKey" value={props.uniqueKey} onClick={deleteTaskBox} type="submit"> <img src="/images/delete.png"/> </button>
 
         
     </UserTask>
@@ -102,18 +105,6 @@ export default TaskBox;
 
 // fix taks-bar > p   
 const UserTask = styled.div`
-    width: 98%;
-    height: 50px;
-    background: linear-gradient(#474747, #272626,#000000);
-    position: absolute;
-    margin: 4px;
-    left: 1%;
-    display: flex; 
-    overflow: hidden;  
-    position: relative;
-    transition: 0.4s;
-    border-radius: 5px;
-    cursor: pointer;
     &.p{ 
         color: green;
         padding-left: 50px; 
@@ -124,7 +115,5 @@ const UserTask = styled.div`
 `
 
 
-/// <form id="btn_task_delete" action="/deletetask" method="post">
-// // onClick=sendDelFunc();
-// <a href="/task/todo"> <button  name="UniqueKey" value={props.uniqueKey} onClick={keyCon} type="submit"> <img type="submit"  class="btn_delete" src="/images/delete.png"/> </button> </a>
-// </form>
+
+

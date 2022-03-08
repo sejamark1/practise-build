@@ -8,8 +8,26 @@
 
 
   
+.task-bar{ 
+  width: 98%;
+  background: linear-gradient(#474747, #272626,#000000);
+  position: absolute;
+  margin: 4px;
+  left: 1%;
+  display: flex; 
+  overflow: hidden;  
+  position: relative;
+  transition: 0.4s;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.active-expand{ 
+  height: 200px;
 
-
+}
+.deactive-expand{ 
+  height: 50px;
+}
 
 
 
@@ -37,12 +55,21 @@
   .task-detail{ 
    width: 40%;
   }
+  /*To show the text when expand the taskbox */
   .task-detail-cover{ 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    overflow-wrap: break-word;
+
   }
   
+  .task-detail-show{ 
+    overflow-wrap: break-word;
+  }
+
+
+  /**/
   
   
   
@@ -108,6 +135,7 @@
   }
   
   #task-belongs-to-username{ 
+    width: 10%;
     color: white;
     margin: 10px 0 0 10px; 
   }
@@ -126,11 +154,20 @@
     margin: 4px 0 1px 30px;
   }
 
-.btn_delete{
+#del_button{ 
+    position: absolute;
+    right: 100px;
+    top: 24px;
+    width: 23px;
+    height: 13px;
+    background: #00800000;
+    border: none;
+}
+#del_button > img{
   height: 20px;
   position: absolute;
-  right: 70px;
-  margin-top: 12px;
+  right: -3px;
+  margin-top: -10px;
   cursor: pointer;
 }
 
@@ -168,6 +205,7 @@
     top: 26px;
   }
   .task-check{ 
+    width: 5%;
     position: relative;
     top: -17px;
     left: 50px;
@@ -177,6 +215,7 @@
     top: -51px;
     font-size: 13px;
     color: white;
+    margin: 10px 0 0 10px; 
   }
   #project-tags{ 
     position: relative;

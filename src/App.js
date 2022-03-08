@@ -15,9 +15,21 @@ function App(){
 
     return(
         <div> 
-            <Login />
-            <SideBar/> 
-            <MiddleBar/> 
+        <Router> 
+            <Switch> 
+                <Route path="/login"> 
+                    <Login /> 
+                </Route>
+                <Route path="/"> 
+                    <SideBar/> 
+                    <MiddleBar/> 
+                </Route>
+                
+            </Switch>
+        </Router>
+
+        
+
 
            
             

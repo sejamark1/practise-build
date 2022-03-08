@@ -11,6 +11,7 @@ function NavBar() {
       <a href="/task"> <button id="nav_button">Task</button> </a>
        <a href="/home"> <button id="nav_button">Chat</button> </a>
        <a href="/home"> <button id="nav_button">Contact</button> </a>
+       <a href="/home"> <button id="nav_button">Admin</button> </a>
 
 
       </div>

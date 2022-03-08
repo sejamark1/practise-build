@@ -62,8 +62,8 @@ function TaskTopBar(){
 }
 function TaskBarDetail(){ 
     return(
-      <div id="top-bar-detail">
-        <h6 className="col-title" style={{marginLeft: "2%"}}>Project Name</h6>
+        <div id="top-bar-detail">
+        <h6 className="col-title" style={{marginLeft: "2%"}}>Project Name</h6>
             <h6 className="col-title" style={{marginLeft: "14%"}}>Tasks Detail</h6>
             <h6 className="col-title" style={{marginLeft: "21%"}}>Due</h6>
             <h6 className="col-title filter-priority" style={{marginLeft: "9%"}}>Priority
