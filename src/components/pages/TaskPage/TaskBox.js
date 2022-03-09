@@ -59,6 +59,27 @@ function expandTaskBox() {
     }
 }
 
+const priorityColours  = {
+    RED: "#B10542", 
+    YELLOW: "#CC6666", 
+    GREEN: "#4EF500", 
+
+
+
+}
+
+
+function priorityColourChanger_HTML(){ 
+    if(props.taskPriority==1){ 
+        return <div className="dot project task-priority" style={{backgroundColor: priorityColours.RED}}> {props.taskPriority}</div>
+    }else if(props.taskPriority==2){ 
+        return <div className="dot project task-priority" style={{backgroundColor: priorityColours.YELLOW}}> {props.taskPriority}</div>
+    }else if(props.taskPriority==3){ 
+        return <div className="dot project task-priority" style={{backgroundColor: priorityColours.GREEN}}> {props.taskPriority}</div>
+    }
+    return <div> ERROR </div>
+}
+
 
 
     //TODO: Use Js effect on these html below. 
@@ -75,7 +96,7 @@ function expandTaskBox() {
         <div onClick={expandTaskBox} className={"project task-detail " + showTaskDetail}>{props.taskDetail}</div>
         <div className="project task-due">{props.taskDue}</div>
         <div style={{"width": "5%"}}> 
-            <div className="dot project task-priority" style={{backgroundColor: "rgb(177, 5, 66)"}}> {props.taskPriority}</div>
+            {priorityColourChanger_HTML()}
         </div>
         <div className="project task-check">
             {props.taskChekced=="true" ? 

@@ -16,7 +16,7 @@
     display: grid;
     transition: visibility 0s, opacity 0.5s linear;
 }
-
+/*Priority Area*/
 .priority_dropdown > a{ 
     background: white;
     height: 30px;
@@ -30,6 +30,22 @@
     transition: visibility 0s, opacity 0.5s linear;
 
 }
+.hideFilter{ 
+
+    display: none;
+    animation-name: priorityShow; 
+    animation-duration: 5s;
+
+}
+
+
+@keyframes priorityShow{ 
+    from{display: none;}
+    to{display: block;}
+}
+/*END: Priority Area*/
+
+
 
 @media only screen and (max-width: 1000px){
     #top-bar-detail {
