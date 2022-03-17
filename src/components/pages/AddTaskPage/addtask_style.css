@@ -8,60 +8,61 @@
     background: white;
     color: #000000;
     margin: 0 auto;
-    margin-top: 2%;
-    width: 1100px;
+    margin: 10px;
+    width: 100%;
     transition: 0.2s ease-in-out;
+    height: 100%;
 
 }
-#add_task:hover{ 
-    transform: scale(1.05);
-}
+
+
 #add_task > form{
     display: flex;
+    height: 100%;
 }
 
 
 
 
   .add_project_form {
+    background-color: #0000001a;
+    height: 100%;
+    width: 100%;
     padding: 1px;
     display: flex;
   }
   
   .detail_project {
     padding: 8px;
-    background: linear-gradient(
-      90deg,
-      rgba(241, 241, 241, 1) 0%,
-      rgba(255, 255, 255, 1) 52%,
-      rgba(241, 241, 241, 1) 100%,
-      rgba(241, 241, 241, 1) 100%
-    );
+    background: linear-gradient( 90deg, rgba(241, 241, 241, 1) 0%, rgba(255, 255, 255, 1) 52%, rgba(241, 241, 241, 1) 100%, rgba(241, 241, 241, 1) 100% );
     border-left: 1px solid #008cff;
+    width: 100%;
+
   }
   
   #input_cover_all > :first-of-type {
     font-size: 13px;
     color: black;
     margin: 5px 0px 5px 6px;
+    text-align: revert;
   }
   
   #input_cover {
     margin: 5px;
     height: 40px;
-    width: 350px;
+    width: 98%;
     background-color: white;
   }
   #form_input {
     height: 40px;
-    width: 350px;
+    width: 100%;
     /*h and w related to input_cover*/
     border: 1px solid grey;
     transition: 0.5s all;
   }
   #form_input:focus {
     height: 40px;
-    width: 350px;
+    width: 100%;
     /*h and w related to input_cover*/
     border: 1px solid #00a3ff;
     background: #004fff2e;
@@ -69,12 +70,9 @@
     outline: none;
     transition: 0.5s all;
   }
+
+
   
-  .add_project_form {
-    background-color: #0000001a;
-    height: 500px;
-    width: 1156px;
-  }
   
   #p_warning {
     font-size: 10px;
@@ -103,7 +101,7 @@
     height: 50px;
     width: 125px;
     position: relative;
-    right: 132px;
+    right: 170px;
     top: 443px;
     cursor: pointer;
     transition: 0.21s ease-in-out;

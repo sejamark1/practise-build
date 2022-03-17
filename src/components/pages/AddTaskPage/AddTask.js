@@ -16,7 +16,7 @@ function AddTask() {
                         <input
                             type="text"
                             id="form_input"
-                            name="projectName"
+                            name="pname"
                             placeholder="Project Name"
                         />
                         </div>
@@ -28,7 +28,7 @@ function AddTask() {
                         <input
                             type="text"
                             id="form_input"
-                            name="projectName"
+                            name="pleader"
                             placeholder="Project Name"
                         />
                         </div>
@@ -40,7 +40,7 @@ function AddTask() {
                         <input
                             type="text"
                             id="form_input"
-                            name="projectName"
+                            name="ptype"
                             placeholder="Project Name"
                         />
                         </div>
@@ -52,7 +52,7 @@ function AddTask() {
                         <textarea
                             style={{ height: "215px", width: "350px", resize: "none" }}
                             id="form_input"
-                            name="w3review"
+                            name="pdetail"
                             rows="4"
                             cols="50"
                         />
@@ -62,24 +62,24 @@ function AddTask() {
             
                     <div className="detail_project">
                     <div id="input_cover_all">
-                        <p> Project Start Date</p>
+                        <p> Start Date</p>
                         <div id="input_cover">
                         <input
                             type="text"
                             id="form_input"
-                            name="projectName"
+                            name="pstartDate"
                             placeholder="DD/MM/YYYY"
                         />
                         </div>
                     </div>
             
                     <div id="input_cover_all">
-                        <p> Project End Date</p>
+                        <p> End Date</p>
                         <div id="input_cover">
                         <input
                             type="text"
                             id="form_input"
-                            name="projectName"
+                            name="pEndDate"
                             placeholder="DD/MM/YYYY"
                         />
                         </div>
@@ -91,7 +91,7 @@ function AddTask() {
                         <input
                             type="text"
                             id="form_input"
-                            name="projectName"
+                            name="pbudget"
                             placeholder="£19,202"
                         />
                         </div>
@@ -102,9 +102,9 @@ function AddTask() {
                         <p> Team Members</p>
                         <div style={{ height: "250px" }} id="input_cover">
                         <textarea
-                            style={{ height: "250px", width: "350px", resize: "none" }}
+                            style={{ height: "250px", width: "100%", resize: "none" }}
                             id="form_input"
-                            name="w3review"
+                            name="teammembers"
                             rows="4"
                             cols="50"
                         />
@@ -116,7 +116,7 @@ function AddTask() {
                     </div>
                     </div>
                 </div>   
-                <a href="/task/todo"><input id="btn_add_task_submit" type="submit" value="Add" /></a>
+                <a className="no_href_property" href="/task/todo"><input id="btn_add_task_submit" type="submit" value="Add" /></a>
 
             </form> 
 

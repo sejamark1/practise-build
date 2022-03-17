@@ -25,9 +25,9 @@ function MiddleBar(){
         <TaskBar /> 
         <AddButton direct="/add-task" addWhat="Add Tasks"/> 
       </Route>
+      {/*TODO: Change so it works for task and project*/}
       <Route path="/add-task">
         <AddTask /> 
-        <AddButton direct="/add-task" addWhat="Add Tasks"/> 
       </Route>
       </Switch>
     </Router>
