@@ -1,14 +1,15 @@
-#add_task{
+* {
+    font-family: "Roboto", sans-serif;
+  }
+
+
+
+  #add_task{
     background: white;
-    color: black;
+    color: #000000;
     margin: 0 auto;
     margin-top: 2%;
-    padding: 30px;
     width: 1100px;
-    border: 5px solid;
-    border-image: linear-gradient(to left bottom, #391cff, #6c19fb, #8c19f7, #a61df4, #bb25f0, #bc24f0, #bd22f0, #be21f0, #ab13f3, #9605f7, #7c00fb, #5800ff);
-    border-image-slice: 1;
-    border-radius: 10px;
     transition: 0.2s ease-in-out;
 
 }
@@ -18,48 +19,71 @@
 #add_task > form{
     display: flex;
 }
-input{ 
-    height: 50px;
-    width: 200px;
+
+
+
+
+  .add_project_form {
+    padding: 1px;
+    display: flex;
+  }
+  
+  .detail_project {
+    padding: 8px;
+    background: linear-gradient(
+      90deg,
+      rgba(241, 241, 241, 1) 0%,
+      rgba(255, 255, 255, 1) 52%,
+      rgba(241, 241, 241, 1) 100%,
+      rgba(241, 241, 241, 1) 100%
+    );
+    border-left: 1px solid #008cff;
+  }
+  
+  #input_cover_all > :first-of-type {
+    font-size: 13px;
+    color: black;
+    margin: 5px 0px 5px 6px;
+  }
+  
+  #input_cover {
+    margin: 5px;
+    height: 40px;
+    width: 350px;
+    background-color: white;
+  }
+  #form_input {
+    height: 40px;
+    width: 350px;
+    /*h and w related to input_cover*/
     border: 1px solid grey;
-    border-radius: 4px;
-    margin-top: 10px;
-    margin-left: 6px;
-}
-select{ 
-    height: 30px;
-    width: 50px;
-    text-align: center;
-    margin: 10px 0 10px 2px;
-}
+    transition: 0.5s all;
+  }
+  #form_input:focus {
+    height: 40px;
+    width: 350px;
+    /*h and w related to input_cover*/
+    border: 1px solid #00a3ff;
+    background: #004fff2e;
+    box-shadow: 0 0 10px #9ecaed;
+    outline: none;
+    transition: 0.5s all;
+  }
+  
+  .add_project_form {
+    background-color: #0000001a;
+    height: 500px;
+    width: 1156px;
+  }
+  
+  #p_warning {
+    font-size: 10px;
+    color: #910000;
+    font-weight: bold;
+  }
+  
 
-.add_task_middle_form{
-    margin-left: 100px;
-}
-textarea{ 
-    width: 694px;
-    height: 517px;
-    resize: none;
-}
-
-#btn_add_task_submit{ 
-
-    border-radius: 7px;
-    background:#d2007f;
-    color: white;
-    height: 50px;
-    width: 125px;
-    position: relative;
-    left: 558px;
-    cursor: pointer;
-    transition: 0.21s ease-in-out;
-}
-
-
-
-
-
-
+  
 
 @keyframes switchcolour{ 
     0%{background: #d2007f; color: white; padding-left: 0;}
@@ -69,7 +93,23 @@ textarea{
 #btn_add_task_submit:hover{ 
     animation: switchcolour 2s infinite;
     transform: scale(1.1);
+}
 
+#btn_add_task_submit{ 
 
+    border-radius: 7px;
+    background: #d2007f;
+    color: white;
+    height: 50px;
+    width: 125px;
+    position: relative;
+    right: 132px;
+    top: 443px;
+    cursor: pointer;
+    transition: 0.21s ease-in-out;
+}
 
+input::placeholder{ 
+    color: grey;
+    font-size: 10px;
 }

@@ -1,0 +1,83 @@
+.add_project_cover{ 
+    width: 100px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+.add_project {
+    width: 100px;
+    height: 100px;
+    background-color: #d5d5d5;
+    cursor: pointer;
+    border-radius: 2px;
+    animation: re-enhance 0.25s ease-in;
+  }
+  .add_project:hover {
+    background-color: #bdbdbd;
+  
+    transform: scale(1.1);
+    animation: enhance 0.5s ease-in-out;
+  }
+  @keyframes enhance {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.1);
+    }
+  }
+  @keyframes re-enhance {
+    from {
+      transform: scale(1.1);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  
+  .add_project > h1,
+  p {
+    color: #b90077;
+    text-align: center;
+  }
+  
+  .add_project > h1 {
+    font-size: 70px;
+    font-weight: 50;
+  }
+  
+  .add_project > p {
+    position: relative;
+    font-weight: 600;
+    margin-top: -60px;
+    font-size: 10px;
+  }
+  
+  .noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
+  
+  @media only screen and (max-width: 500px) {
+    .add_project_cover{ 
+        width: 100px;
+    }
+    .add_project {
+      width: 100px;
+      height: 100px;
+    }
+  
+    .add_project > h1 {
+      font-size: 70px;
+    }
+    .add_project > p {
+      margin-top: -60px;
+      font-size: 10px;
+    }
+  }
+  

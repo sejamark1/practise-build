@@ -18,6 +18,7 @@ function returnTaskBox(tid, pName, tDetail,tDue, tPriority,tChecked, tLIUser, tT
     taskChekced={tChecked}
     taskLoggedInUsername={tLIUser}
     taskTag={tTag}  
+    supervisor="1"
     />
 
 }

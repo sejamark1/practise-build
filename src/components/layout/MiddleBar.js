@@ -5,6 +5,7 @@ import Home from "../pages/HomePage/Home";
 import TaskBar from "../pages/TaskPage/TaskBar";
 import AddTask from "../pages/AddTaskPage/AddTask";
 import Login from "../pages/LoginPage/Login";
+import AddButton from "./UsefulComponenet/AddButton";
 
 
 function MiddleBar(){ 
@@ -17,19 +18,20 @@ function MiddleBar(){
 
       <Route path="/home">
           <Home />
+          <AddButton direct="/add-task" addWhat="Add Projects"/> 
+
       </Route>
       <Route path="/task/">
         <TaskBar /> 
+        <AddButton direct="/add-task" addWhat="Add Tasks"/> 
       </Route>
       <Route path="/add-task">
         <AddTask /> 
+        <AddButton direct="/add-task" addWhat="Add Tasks"/> 
       </Route>
       </Switch>
     </Router>
 
-    <a href="/add-task">
-      <button  id="addIcon"> + </button>
-    </a> 
   </MiddleBarLayout>
   );
 }

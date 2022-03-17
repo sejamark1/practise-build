@@ -74,7 +74,7 @@
   
   
   .task-due{ 
-    width: 20%;
+    width: 10%;
   }
   .task-priority{ 
   }
@@ -135,15 +135,16 @@
   }
   
   #task-belongs-to-username{ 
-    width: 10%;
+    width: 7%;
     color: white;
-    margin: 10px 0 0 10px; 
+    margin: 13px 0 0 22px;
+    padding-left: 15px;
   }
 
 
   #btn_tags{ 
     display: grid;
-    width: 150px;
+    width: 100%;
     height: 18px;
     font-size: 12px;
     outline: none;
@@ -155,13 +156,13 @@
   }
 
 #del_button{ 
-    position: absolute;
-    right: 100px;
-    top: 24px;
-    width: 23px;
-    height: 13px;
-    background: #00800000;
-    border: none;
+  position: absolute;
+  right: 28%;
+  top: 17px;
+  width: 23px;
+  height: 13px;
+  background: #00800000;
+  border: none;
 }
 #del_button > img{
   height: 20px;
@@ -170,6 +171,26 @@
   margin-top: -10px;
   cursor: pointer;
 }
+
+
+/*Edit Hide button in taskbox*/
+.edit_hide{ 
+  padding-left: 160px;
+
+}
+.btn{ 
+  color: white;
+  background: #4a0078;
+  height: 38px;
+  width: 84px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin: 5px 0 0 10px;
+  cursor: pointer;
+}
+
+
 
 
 @media only screen and (max-width: 1000px) {
@@ -205,7 +226,8 @@
     top: 26px;
   }
   .task-check{ 
-    width: 5%;
+    margin-top:2px;
+    width: 3%;
     position: relative;
     top: -17px;
     left: 50px;
@@ -241,3 +263,6 @@
 }
 
 }
+
+
+
