@@ -6,6 +6,7 @@ import TaskBar from "../pages/TaskPage/TaskBar";
 import AddTask from "../pages/AddTaskPage/AddTask";
 import Login from "../pages/LoginPage/Login";
 import AddButton from "./UsefulComponenet/AddButton";
+import ChatBox from "../pages/ChatBoxPage/ChatBox";
 
 
 function MiddleBar(){ 
@@ -28,6 +29,9 @@ function MiddleBar(){
       {/*TODO: Change so it works for task and project*/}
       <Route path="/add-task">
         <AddTask /> 
+      </Route>
+      <Route path="/chat-box"> 
+        <ChatBox />
       </Route>
       </Switch>
     </Router>

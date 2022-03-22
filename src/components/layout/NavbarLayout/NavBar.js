@@ -9,7 +9,7 @@ function NavBar() {
       <ExpandImage href=""> <button id="nav_button"><img src="/images/expand.png"/></button> </ExpandImage>
       <a href="/home"> <button id="nav_button">Home</button> </a>
       <a href="/task"> <button id="nav_button">Task</button> </a>
-       <a href="/home"> <button id="nav_button">Chat</button> </a>
+       <a href="/chat-box"> <button id="nav_button">Chat</button> </a>
        <a href="/home"> <button id="nav_button">Contact</button> </a>
        <a href="/home"> <button id="nav_button">Admin</button> </a>
 
