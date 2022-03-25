@@ -70,17 +70,17 @@ function AllTaskLists(props) {
      }, [])
 
      const fetchData = async(data) =>{ 
-        const response = await fetch("http://localhost:9000/api/user_task_data", { // return promise
+        const response = await fetch("http://localhost:9000/api/user_task_data", { 
             method: "GET", 
             // mode: "no-cors", 
             headers: {
                 'Content-type' : "application/json"
             }, 
-            body: JSON.stringify() // creeat obj of form 
+            body: JSON.stringify() 
         })
         const outcome = await response.json(); 
         addTodoTask(outcome);
-        setBackendData(outcome); // If any changes occur in backEndData, then all related to this will go through a change. 
+        setBackendData(outcome); 
 
     }
   

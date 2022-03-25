@@ -7,7 +7,7 @@ import "./addtask_style.css"
 function AddTask() {
     return (
         <div class="disabled" id="add_task">
-            <form action="/add-task" method="post" >
+            <form action="/add-projects" method="post" >
                 <div className="add_project_form">
                     <div className="detail_project">
                     <div id="input_cover_all">

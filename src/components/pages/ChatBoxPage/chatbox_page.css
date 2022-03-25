@@ -65,7 +65,7 @@
 #receive,
 #send {
   height: 800px;
-  width: 50%;
+  width: 100%;
 }
 #receive {
   background: #d5d5d5;
@@ -79,7 +79,7 @@
     position: relative;
     background: #008b00d4;
     width: auto;
-    margin: 5px 6px 0 10%;
+    margin: 5px 6px 0 50%;;
     border-radius: 10px;
     padding: 1px 0px 1px 11px;
     color: white;
@@ -90,10 +90,10 @@
     font-size: 70%;
   }
   #receive-msg {
-    position: relative;
+    position: relative; 
     background: white;
     width: auto;
-    margin: 5px 10% 0 6px;
+    margin: 5px 50% 0 6px;
     border-radius: 10px;
     padding: 1px 0px 1px 11px;
     color: black;
@@ -109,13 +109,32 @@
 /*SENDING BUTTON*/
 
 #send-button{ 
-
+    position: relative;
+    top: -48px;
+    padding-left: 10px;
+}
+#msg-bar{
+    transition: 0.5s all;
+    width: 88%;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid grey;
 }
 
-#send-button > input{ 
-  width: 92%;
-  height: 22px;
-}
+
 #send-button > button{ 
+    width: 100px;
+    height: 32px;
+    border-radius: 5px;
+    outline: none;
+    text-decoration: none;
+    border: 0.01px solid #a1a1a1;
+    cursor: pointer;
+    background: #00adff;
+    margin-top: 15px;
+    color: white;
+}
 
+#send-button > button:hover{ 
+    background: #00adffd9;
 }

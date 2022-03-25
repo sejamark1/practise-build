@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./chatbox_page.css"
 import { useState } from 'react'
 
@@ -21,25 +21,29 @@ function ChatBox() {
 
     }
 
+    // useEffect(()=>{ 
+    //     console.log("x"); 
+    // }, [msgArray])
 
     // MSG function
 
-    function Rmsg(msg){
-        return (<div id="receive-msg"> 
+    function Rmsg(msg, sr){ // sr=sendORreceive
+        return (<div id={sr}> 
             <p > {msg} </p>
         </div>)
     }
 
 
     function addSendMsg(){ // TODO: 
-        array.push(Smsg("asdfadsf"));
+        array.push(Smsg("asdfadsf", "send-msg"));
         setMsgArray(array);
+        console.log(msgArray)
     }
 
 
 
-    function Smsg(msg){
-        return (<div id="send-msg"> 
+    function Smsg(msg,sr){
+        return (<div id={sr}> 
             <p > {msg} </p>
         </div>)
     }
@@ -64,6 +68,8 @@ function ChatBox() {
                 <div id="user-icon"> <img src="https://twinfinite.net/wp-content/uploads/2021/12/Big-Bang-Theory.jpeg" /></div>
                 <div id="user-icon"> <img src="https://twinfinite.net/wp-content/uploads/2021/12/Big-Bang-Theory.jpeg" /></div>
                 <div id="user-icon"> <img src="https://twinfinite.net/wp-content/uploads/2021/12/Big-Bang-Theory.jpeg" /></div>
+
+                
             </div>
         </div>
         <div onClick={slideForward} id="slider-forward"> <img src="images/forward_arrow.png" /> </div>
@@ -72,20 +78,15 @@ function ChatBox() {
     <div id="chat-box-with-user">
         <div id="chat-box-user"> 
         <div id="receive-send"> 
-            <div id="receive" > 
-                <div id="receive-msg"> 
-                    <p > Yo whats upYo whats upYo whats upYo whats upYo whats upYo whats up </p>
-                </div>
-            </div>
             <div id="send" > 
                 {msgArray.map(msg=>msg)}
-                {Smsg("Yo whats upYo whats upYo whats upYo whats upYo whats upYo whats up")}
-                {Smsg("Yo whats upYo whats upYo whats upYo whats upYo whats upYo whats up")}
-                {Smsg("Yo whats upYo whats upYo whats upYo whats upYo whats upYo whats up")}
+                {Smsg("Yo whats upYo whats upYo whats upYo whats upYo whats upYo whats up", "send-msg")}
+                {Smsg("Yo whats upYo whats upYo whats upYo whats upYo whats upYo whats up", "receive-msg")}
+                {Smsg("Yo whats upYo whats upYo whats upYo whats upYo whats upYo whats up", "send-msg")}
             </div>
         </div>
         <div id="send-button"> 
-            <input id="msg" type="text" placeholder="input your message here" /> 
+            <input id="msg-bar" type="text" placeholder="input your message here" /> 
             <button onClick={addSendMsg}> SEND </button>
         </div> 
         </div> 

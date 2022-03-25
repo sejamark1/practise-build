@@ -20,7 +20,6 @@ function MiddleBar(){
       <Route path="/home">
           <Home />
           <AddButton direct="/add-task" addWhat="Add Projects"/> 
-
       </Route>
       <Route path="/task/">
         <TaskBar /> 
