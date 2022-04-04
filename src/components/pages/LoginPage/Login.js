@@ -4,36 +4,81 @@ import "./login.css"
 
 function Login() {
   return (
-    <section> 
-      <div id="login_container"> 
-        <div id="top"> 
-          <h1> Login </h1>
-          <p> Please enter your username and password </p>
-        </div>
-        <div id="login_username"> 
-          <input type="email" id="typeEmailX" placeholder='Email' class="form-control " />
-        </div>
-        <div id="login_password"> 
-          <input type="password" id="typeEmailX" placeholder='Password' class="form-control " />
-        </div>
-        
-        <p> Forgot password? </p>
-        <button class="login_btn" type="submit">Login</button>
-
-      <div class="d-flex justify-content-center text-center mt-4 pt-1">
-        <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
-        <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
-        <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+    <div class="main">
+    <div class="login">
+      <div id="log">
+        <h1 id="title">Log In</h1>
+        <form id="login">
+          <div class="input_field">
+            <img id="input_field_img" src="./img/user.png" alt="" />
+            <input
+              id="input_value_field"
+              type="text"
+              placeholder="Username"
+            />
+          </div>
+          <div class="input_field">
+            <img id="input_field_img" src="./img/user.png" alt="" />
+            <input
+              id="input_value_field"
+              type="password"
+              placeholder="Password"
+            />
+          </div>
+          <button class="btn_login" href="/home">Login</button>
+        </form>
       </div>
+    </div>
 
-      </div>
+    <div class="signup">
+      <h1 id="title">Sign up</h1>
 
+      <form id="sign_up" action="post">
+        <div class="input_field">
+          <img id="input_field_img" src="./img/user.png" alt="" />
+          <input
+            id="input_value_field"
+            type="text"
+            placeholder="First Name"
+          />
+        </div>
+        <div class="input_field">
+          <img id="input_field_img" src="./img/user.png" alt="" />
+          <input id="input_value_field" type="text" placeholder="Last Name" />
+        </div>
+        <div class="input_field">
+          <img id="input_field_img" src="./img/user.png" alt="" />
+          <input id="input_value_field" type="text" placeholder="Username" />
+        </div>
+        <div class="input_field">
+          <img id="input_field_img" src="./img/user.png" alt="" />
+          <input
+            id="input_value_field"
+            type="text"
+            placeholder="Email Address"
+          />
+        </div>
+        <div class="input_field">
+          <img id="input_field_img" src="./img/user.png" alt="" />
+          <input
+            id="input_value_field"
+            type="password"
+            placeholder="Password"
+          />
+        </div>
+        <div class="input_field">
+          <img id="input_field_img" src="./img/user.png" alt="" />
+          <input
+            id="input_value_field"
+            type="password"
+            placeholder="Password"
+          />
+        </div>
 
-
-
-
-    </section> 
-
+        <button class="btn_signup">Sign Up</button>
+      </form>
+    </div>
+  </div>
     
 
 

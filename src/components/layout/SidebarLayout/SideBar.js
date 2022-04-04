@@ -1,6 +1,32 @@
-import React, {useState, useRef} from "react";
+import React, {useState, useRef, useEffect} from "react";
 
 function SideBar(props){ 
+    const [backenddata, setBackendData] = useState([{}]); 
+
+
+    useEffect(() => { 
+        fetchData();
+    }, [])
+
+    const fetchData = async(data) =>{ 
+       const response = await fetch("http://localhost:9000/api/user_project_data", { 
+           method: "GET", 
+           // mode: "no-cors", 
+           headers: {
+               'Content-type' : "application/json"
+           }, 
+           body: JSON.stringify() 
+       })
+       const outcome = await response.json(); 
+       setBackendData(outcome); 
+
+       
+   }
+
+
+
+
+
     const loggedInUserButton = useRef();
     // Toggle between showing Logout and account button based on clicks on userIcon.
     const [display, setDisplay] = useState(""); 
@@ -12,12 +38,17 @@ function SideBar(props){
         }
 
     }
-   // Return Side bar with PROJECT DETAIL and USER DETAIL. 
+
+    function returnProject(pName){ 
+        return(<p className="side-text-detail p-name"> {pName} </p>);
+    }
+
+
+
     return(
         <div id="side-bar"> 
             <p className="side-text-detail logo"> TIMEly </p> 
-            <p className="side-text-detail p-name"> Nodlehs </p> 
-            <p className="side-text-detail p-name"> Sputnix </p> 
+            {backenddata.map(project=>returnProject(project.projectName))}
             <div style={{"display": display}}ref={loggedInUserButton} id="user-bar">
                 <button>Log out</button>
                 <button>Account</button>

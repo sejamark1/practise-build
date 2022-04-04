@@ -11,6 +11,16 @@ import Login from "./components/pages/LoginPage/Login";
 
 
 function App(){ 
+
+    var typeOfUser = "Admin"; 
+
+
+
+    
+    function changeType(){ 
+        typeOfUser=="Admin" ? typeOfUser="User" : typeOfUser="Admin"
+        console.log(typeOfUser);
+    }
       
 
     return(
@@ -18,11 +28,11 @@ function App(){
         <Router> 
             <Switch> 
                 <Route path="/login"> 
-                    <Login /> 
+                    <Login tOfUser={typeOfUser}/> 
                 </Route>
                 <Route path="/"> 
-                    <SideBar/> 
-                    <MiddleBar/> 
+                    <SideBar tOfUser={typeOfUser}/> 
+                    <MiddleBar swtichAdmin={changeType} tOfUser={typeOfUser}/> 
                 </Route>
                 
             </Switch>

@@ -6,8 +6,8 @@ import AllTaskLists from './AllTaskLists';
 
 
 
-function TaskBar() {
-    console.log("func: taskbar");
+function TaskBar(props) {
+    console.log(props.tOfUser);
     const [showFilter, setShowFilter] = useState("hideFilter"); 
     const [newPriority, setNewPriority] = useState("All")
 
@@ -48,10 +48,13 @@ function TaskBar() {
             <Router> 
                 <Switch> 
                 <Route path="/task/todo"> 
-                    <AllTaskLists taskCondition="false" priority= {newPriority} /> 
+                    <AllTaskLists tOfUser={props.tOfUser} taskCondition="false" priority= {newPriority} /> 
                 </Route>
                 <Route path="/task/done"> 
-                    <AllTaskLists taskCondition="true" priority={newPriority} /> 
+                    <AllTaskLists tOfUser={props.tOfUser} taskCondition="true" priority={newPriority} /> 
+                </Route>
+                <Route path="/task/hidden"> 
+                    <AllTaskLists tOfUser={props.tOfUser} taskCondition="false" priority={newPriority} hidden={"0"}/> 
                 </Route>
                 </Switch>
             </Router>
@@ -85,7 +88,7 @@ function TaskTopBar(){
                 Done
             </MenuButton>
             </a> 
-            <a>
+            <a href="/task/hidden">
             <MenuButton style ={{width: "130px"}}> 
                 <img src="\images\done.png"/>
                 Unpubished
@@ -158,6 +161,12 @@ const MenuButton = styled.button`
     margin-top: -1px;
     color: white;
   }
+
+  &:hover{ 
+      background: #400068;
+  }
+
+  
 `
 
 export default TaskBar;

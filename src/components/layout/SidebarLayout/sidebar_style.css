@@ -3,6 +3,8 @@
     width: 10%; 
     background: linear-gradient(#222222,#333333 );
     position: absolute; 
+    overflow-y: scroll;
+    scroll-behavior: smooth;
   }
   .side-text-detail{ 
 
@@ -38,9 +40,9 @@
 #bottom-side-bar{ 
     height: 60px;
     width: 100%;
-    /* background: red; */
     position: absolute;
-    bottom: 10px;
+    margin-top: -60px;
+
   }
   #user-image{ 
     border-radius: 50%;
@@ -59,10 +61,12 @@
   }
   #user-bar { 
     display: grid;
-    position: absolute;
+    position: relative;
     width: 100%;
     bottom: 75px;
     transition: 2s;
+    margin-top: 100px;
+
   }
   
   #user-bar > button{ 

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import "./navbar_style.css";
 
 
-function NavBar() {
+function NavBar(props) {
     return (
       <div id="navbar">
       <ExpandImage href=""> <button id="nav_button"><img src="/images/expand.png"/></button> </ExpandImage>
@@ -11,8 +11,8 @@ function NavBar() {
       <a href="/task"> <button id="nav_button">Task</button> </a>
        <a href="/chat-box"> <button id="nav_button">Chat</button> </a>
        <a href="/home"> <button id="nav_button">Contact</button> </a>
-       <a href="/home"> <button id="nav_button">Admin</button> </a>
-
+       <button onClick={props.changeAdmin} id="nav_button">Admin</button>
+       
 
       </div>
     );
@@ -29,4 +29,6 @@ const ExpandImage = styled.a`
 `
 export default NavBar; 
 
-  
+// {props.tOfUser == "Admin"? 
+// <a href="/home"> <button id="nav_button">Admin</button> </a>
+// : ""}

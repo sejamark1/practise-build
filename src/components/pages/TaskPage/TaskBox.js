@@ -7,7 +7,7 @@ import PromptBox from "../../layout/PromptBoxLayout/PromptBox";
 function TaskBox(props){ 
     const [taskBoxExpander, setTaskBoxExpander] = useState("deactive-expand"); 
     const [showTaskDetail, setShowTaskDetail] = useState("task-detail-cover")
-
+    const [promptBox, setPromptBox] = useState(<div></div>)
 
     // Change width of UserTask to 50% when clicked. And Vice versa.  
 
@@ -16,9 +16,12 @@ function TaskBox(props){
 
 
 
-    
 
+        
 function deleteTaskBox(){ 
+    //setPromptBox(<PromptBox />)
+
+    
     fetch(`http://localhost:9000/api/deletetask/${props.uniqueKey}`, {
         method: "DELETE"
     }).then((result)=> { 
@@ -59,8 +62,22 @@ function expandTaskBox() {
     }
 }
 
-function makeTaskUnpublish(){
-    console.log("Hide Task ")
+function taskShowOrHide(){
+    let taskShowOrHide= props.taskPublish=="1" ? "Hide" : "Show"; 
+
+    fetch(`http://localhost:9000/api/update-publish/${props.uniqueKey}/${taskShowOrHide}`, { 
+        method: "post"
+    }).then((result)=> { 
+        console.log(result); 
+        result.json().then((resp)=>{ 
+
+        })
+    })
+
+
+    
+    window.location.reload();
+
 }
 const priorityColours  = {
     RED: "#B10542", 
@@ -110,18 +127,25 @@ function priorityColourChanger_HTML(){
             <button id="btn_tags" style={{backgroundColor: "rgb(255, 50, 0)"}} >Design</button>
             <button id="btn_tags" style={{backgroundColor: "rgb(85, 255, 0)"}} >Develop</button>
         </div>
+        {props.tOfUser=="Admin"?  
         <button id="del_button"  name="UniqueKey" value={props.uniqueKey} onClick={deleteTaskBox} type="submit"> <img src="/images/delete.png"/> </button>
-        
-        {props.supervisor=="1"?  
+        :null}
+        {props.tOfUser=="Admin"?  
         <div class="edit_hide">
             <button class="btn"  name="UniqueKey" value={props.uniqueKey} > Edit </button>
-            <button class="btn"  name="UniqueKey" value={props.uniqueKey} onClick={makeTaskUnpublish} > Hide </button>
+            {props.taskPublish=="1" ? 
+            <button class="btn"  name="UniqueKey" value={props.uniqueKey} onClick={taskShowOrHide} > Hide </button>
+            : 
+            <button class="btn"  name="UniqueKey" value={props.uniqueKey} onClick={taskShowOrHide} > Show </button>
+            }
         </div> : 
-        ""} 
+        null} 
         
     
         
     </UserTask>
+    {promptBox}
+
 
     
    </>    

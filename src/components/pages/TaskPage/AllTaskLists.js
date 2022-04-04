@@ -8,8 +8,8 @@ import { useState, useEffect } from 'react';
 //COLLECTION of all TaskBoxes aka TaskBox.js 
 
 //RETURN a TaskBox with relavent data. 
-function returnTaskBox(tid, pName, tDetail,tDue, tPriority,tChecked, tLIUser, tTag){ 
-    return <TaskBox key={tid} onClick={()=> console.log(tid)}
+function returnTaskBox(tOfUser, tid, pName, tDetail,tDue, tPriority,tChecked, tLIUser, tTag, tPublish){ 
+    return <TaskBox tOfUser={tOfUser} key={tid} onClick={()=> console.log(tid)}
     uniqueKey={tid}
     projectName={pName}
     taskDetail={tDetail}
@@ -18,7 +18,7 @@ function returnTaskBox(tid, pName, tDetail,tDue, tPriority,tChecked, tLIUser, tT
     taskChekced={tChecked}
     taskLoggedInUsername={tLIUser}
     taskTag={tTag}  
-    supervisor="1"
+    taskPublish={tPublish}
     />
 
 }
@@ -30,22 +30,29 @@ function returnTaskBox(tid, pName, tDetail,tDue, tPriority,tChecked, tLIUser, tT
 const todoTask = []; 
 var item = [];
 // Adds ALL task data to todoTask. CALLED FROM: AllTaskLists-/it fetches data/
-function addTodoTask(outcome){
+function addTodoTask(outcome, tOfUser){
     for(var i = 0; i < outcome.length; i++){ 
         const o = outcome[i]
-        todoTask.push(returnTaskBox(o.taskId, o.projectName, o.taskDetail, o.taskDue, o.taskPriority, (o.taskStatus==0 ? "false" : "true"), o.username, o.taskTags))
+        todoTask.push(returnTaskBox(tOfUser, o.taskId, o.projectName, o.taskDetail, o.taskDue, o.taskPriority, (o.taskStatus==0 ? "false" : "true"), o.username, o.taskTags, o.published.toString()))
     }
 }
 
 //Based on conditon (projectChecked), it is filter and add to item array. Then <TaskBox> Component is printed. 
-function printTask(condition, priority="All"){ 
+// NOTE: 0 mean task is not published, 1 otherwise. 
+function printTask(condition, priority="All", hidden="1"){ 
+    let filterByPublish = (todo) => todo.props.taskPublish===hidden
     let filterByCondition = (todo) => todo.props.taskChekced===condition
     let filterByPriority = (todo) => priority==="All" ? todo.props.taskPriority : todo.props.taskPriority===priority; 
     // If going to do show lastest task by date then sort the array out before mapping based on date. 
-    item = todoTask.filter(todo => ((filterByCondition(todo)) && (filterByPriority(todo)))); 
-    //item = todoTask.filter(todo => ((todo.props.taskChekced===condition) && (todo.props.taskPriority===priority))); 
+    if(hidden==="0"){
+        item = todoTask.filter(todo => (((filterByPriority(todo) && filterByPublish(todo))))); 
 
+    }else{ 
+        item = todoTask.filter(todo => ((filterByCondition(todo)) && (filterByPriority(todo) && filterByPublish(todo) ))); 
+    }
+    //item = todoTask.filter(todo => ((todo.props.taskChekced===condition) && (todo.props.taskPriority===priority))); 
     return item.map(todo=>todo); 
+    
 }
 
 // DON'T NEED
@@ -64,7 +71,6 @@ function AllTaskLists(props) {
     console.log("From AllTaskList "+ props.priority);
     const [backenddata, setBackendData] = useState([{}]); 
 
-
      useEffect(() => { 
          fetchData();
      }, [])
@@ -79,8 +85,10 @@ function AllTaskLists(props) {
             body: JSON.stringify() 
         })
         const outcome = await response.json(); 
-        addTodoTask(outcome);
+        addTodoTask(outcome, props.tOfUser);
         setBackendData(outcome); 
+        console.log("from alltasklist");
+        console.log( outcome[0].published); 
 
     }
   
@@ -88,7 +96,7 @@ function AllTaskLists(props) {
     return (
         <div>  
 
-            {backenddata.length < 0 ? <p>Loading </p> :printTask(props.taskCondition, props.priority)}
+            {backenddata.length < 0 ? <p>Loading </p> :printTask(props.taskCondition, props.priority, props.hidden)}
             {(item.length) > 0  ?  "" : <h1 className='no-task-to-show'>No task to show...</h1>}
             {props.taskCondition == "false" ? 
             <div id="progress-measure">

@@ -1,8 +1,8 @@
 .add_project_cover{ 
-    width: 100px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
+  width: 100px;
+  position: relative;
+  bottom: 10px;
+  left: 91%;
 }
 .add_project {
     width: 100px;

@@ -9,28 +9,33 @@ import AddButton from "./UsefulComponenet/AddButton";
 import ChatBox from "../pages/ChatBoxPage/ChatBox";
 
 
-function MiddleBar(){ 
+function MiddleBar(props){ 
   return(
     <MiddleBarLayout id="middle-bar">
-    <NavBar />
+    <NavBar changeAdmin={props.swtichAdmin} tOfUser={props.tOfUser} />
 
     <Router>
       <Switch> 
-
+      <Route path="/login">
+        <Login />
+      </Route>
       <Route path="/home">
-          <Home />
-          <AddButton direct="/add-task" addWhat="Add Projects"/> 
+          <Home tOfUser={props.tOfUser} />
+          <AddButton tOfUser={props.tOfUser} direct="/add-project" addWhat="Add Projects"/> 
       </Route>
       <Route path="/task/">
-        <TaskBar /> 
-        <AddButton direct="/add-task" addWhat="Add Tasks"/> 
+        <TaskBar tOfUser={props.tOfUser} /> 
+        <AddButton tOfUser={props.tOfUser} direct="/add-task" addWhat="Add Tasks"/> 
       </Route>
       {/*TODO: Change so it works for task and project*/}
-      <Route path="/add-task">
-        <AddTask /> 
+      <Route path="/add-project">
+        <AddTask tOfUser={props.tOfUser} typeAdd="projects"/> 
       </Route>
+      <Route path="/add-task">
+        <AddTask tOfUser={props.tOfUser} typeAdd="task"/> 
+       </Route>
       <Route path="/chat-box"> 
-        <ChatBox />
+        <ChatBox tOfUser={props.tOfUser} />
       </Route>
       </Switch>
     </Router>
