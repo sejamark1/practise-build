@@ -7,10 +7,10 @@ import { useState } from 'react'
 
 
 function ChatBox() {
-    var array = [Smsg("Graemes test message", "receive-msg")]; 
+    var array = []; 
     const [slide, setSlide] = useState("0"); 
     const [msgArray, setMsgArray] = useState(array); // Fetch data for this in real. 
-
+    const [message, setMessage] = useState(""); 
     function slideBack(){ 
         setSlide((parseInt(slide) + -100).toString()); 
         console.log(slide); 
@@ -22,19 +22,21 @@ function ChatBox() {
     }
 
     
-function addSendMsg(){ // TODO:
-    // const newMsgArray = msgArray.filter(msg => {
-    //     if(msg.id != deleteID){ 
-    //         return true; 
-    //     }else{ 
-    //         return false
-    //     }
-    // }); 
-    const newMsgArray = [ ...msgArray, Smsg("asdfadsf", "send-msg") ];  
-    setMsgArray(newMsgArray);
-    console.log(msgArray)
+    function addSendMsg(){ // TODO:
 
-}
+        const newMsgArray = [ Smsg(message, "send-msg"), ...msgArray ];  
+        if(message != ""){ 
+            setMsgArray(newMsgArray);
+        }
+    
+    }
+
+    function addReceiveMsg(){ // TODO:
+
+        const newMsgArray = [ ...msgArray, Smsg(message, "receive-msg") ];  
+        setMsgArray(newMsgArray);
+    
+    }
 
     // useEffect(()=>{ 
     //     console.log("x"); 
@@ -70,19 +72,7 @@ function addSendMsg(){ // TODO:
             <div style={{transform: "translateX("+slide+"px)"}} id="chat-users">
                 <div id="user-icon"> <img src="https://twinfinite.net/wp-content/uploads/2021/12/Big-Bang-Theory.jpeg" /></div> // instead of image, fetch the user and use the first letter of their username. OR create component of users.
                 <div id="user-icon"> <img src="https://twinfinite.net/wp-content/uploads/2021/12/Big-Bang-Theory.jpeg" /></div>
-                <div id="user-icon"> <img src="https://twinfinite.net/wp-content/uploads/2021/12/Big-Bang-Theory.jpeg" /></div>
-                <div id="user-icon"> <img src="https://twinfinite.net/wp-content/uploads/2021/12/Big-Bang-Theory.jpeg" /></div>
-                <div id="user-icon"> <img src="https://twinfinite.net/wp-content/uploads/2021/12/Big-Bang-Theory.jpeg" /></div>
-                <div id="user-icon"> <img src="https://twinfinite.net/wp-content/uploads/2021/12/Big-Bang-Theory.jpeg" /></div>
-                <div id="user-icon"> <img src="https://twinfinite.net/wp-content/uploads/2021/12/Big-Bang-Theory.jpeg" /></div>
-                <div id="user-icon"> <img src="https://twinfinite.net/wp-content/uploads/2021/12/Big-Bang-Theory.jpeg" /></div>
-                <div id="user-icon"> <img src="https://twinfinite.net/wp-content/uploads/2021/12/Big-Bang-Theory.jpeg" /></div>
-                <div id="user-icon"> <img src="https://twinfinite.net/wp-content/uploads/2021/12/Big-Bang-Theory.jpeg" /></div>
-                <div id="user-icon"> <img src="https://twinfinite.net/wp-content/uploads/2021/12/Big-Bang-Theory.jpeg" /></div>
-                <div id="user-icon"> <img src="https://twinfinite.net/wp-content/uploads/2021/12/Big-Bang-Theory.jpeg" /></div>
-                <div id="user-icon"> <img src="https://twinfinite.net/wp-content/uploads/2021/12/Big-Bang-Theory.jpeg" /></div>
-                <div id="user-icon"> <img src="https://twinfinite.net/wp-content/uploads/2021/12/Big-Bang-Theory.jpeg" /></div>
-                <div id="user-icon"> <img src="https://twinfinite.net/wp-content/uploads/2021/12/Big-Bang-Theory.jpeg" /></div>
+
 
                 
             </div>
@@ -95,15 +85,12 @@ function addSendMsg(){ // TODO:
         <div id="receive-send"> 
             <div id="send" > 
             {msgArray.map(msg=>msg)}
-            {msgArray.map(msg=>console.log(msg))}
-            {Smsg("Yo whats upYo whats upYo whats upYo whats upYo whats upYo whats up", "send-msg")}
-                {Smsg("Yo whats upYo whats upYo whats upYo whats upYo whats upYo whats up", "receive-msg")}
-                {Smsg("Yo whats upYo whats upYo whats upYo whats upYo whats upYo whats up", "send-msg")}
             </div>
         </div>
         <div id="send-button"> 
-            <input id="msg-bar" type="text" placeholder="input your message here" /> 
+            <input onChange={event => setMessage(event.target.value)} id="msg-bar" type="text" placeholder="input your message here" /> 
             <button onClick={addSendMsg}> SEND </button>
+            <button onClick={addReceiveMsg}> RECEIVE </button>
         </div> 
         </div> 
     </div>

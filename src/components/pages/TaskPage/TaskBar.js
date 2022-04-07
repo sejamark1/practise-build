@@ -1,20 +1,46 @@
-import React, { useState } from 'react'
+import { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'; 
 import styled from "styled-components";
 import AllTaskLists from './AllTaskLists';
-
-
+import fetchProjectData from '../../API';
 
 
 function TaskBar(props) {
-    console.log(props.tOfUser);
+    //console.log(props.funcEditId);
     const [showFilter, setShowFilter] = useState("hideFilter"); 
     const [newPriority, setNewPriority] = useState("All")
 
     function showFilterUpdate() {
         showFilter == "hideFilter" ? setShowFilter("priority_dropdown") : setShowFilter("hideFilter"); 
     
+    }   
+
+
+
+    const [projectData, setProjectData] = useState([{}]);
+
+    useEffect(() => { 
+        fetchModules() ;
+    }, [])
+
+    const fetchModules = async () => {
+        console.log("Loading ...")
+        const outcome = await fetchProjectData("user_project_data", "GET");
+        setProjectData(outcome);
     }
+
+
+
+
+
+   
+
+
+
+   
+
+
+
 
 
 
@@ -24,15 +50,15 @@ function TaskBar(props) {
 
 <TaskTopBar />
     <div  onClick={showFilterUpdate} id="top-bar-detail">
-        <h6 className="col-title" style={{marginLeft: "2%"}}>Project Name</h6>
-        <h6 className="col-title" style={{marginLeft: "14%"}}>Tasks Detail</h6>
-        <h6 className="col-title filter-priority" style={{marginLeft: "21%"}}>Due
+        <h6 className="col-title" style={{width: "25%"}}>Project Name</h6>
+        <h6 className="col-title" style={{width: "33%"}}>Tasks Detail</h6>
+        <h6 className="col-title filter-priority" style={{width: "7%"}}>Due
         <div className={showFilter}>
             <button onClick={() => setNewPriority("1")} className="priority-number">Latest</button>
             <button onClick={() => setNewPriority("2")} className="priority-number">Default</button>
         </div> 
         </h6>
-        <h6 className="col-title filter-priority" style={{marginLeft: "9%"}}>Priority
+        <h6 className="col-title filter-priority" style={{width: "4%"}}>Priority
             <div className={showFilter}>
                 <button onClick={() => setNewPriority("1")} className="priority-number">1</button>
                 <button onClick={() => setNewPriority("2")} className="priority-number">2</button>
@@ -40,22 +66,29 @@ function TaskBar(props) {
                 <button onClick={() => setNewPriority("All")} className="priority-number">All</button>
             </div> 
         </h6>
-        <h6 className="col-title" style={{marginLeft: "11%"}}>Status</h6>
-        <h6 className="col-title" style={{marginLeft: "14%"}}>Allocated</h6>
-        <h6 className="col-title" style={{marginLeft: "4%"}}>Tags</h6>
+        <h6 className="col-title" style={{width: "10%"}}>Status</h6>
+        <h6 className="col-title" style={{width: "13%"}}>Allocated</h6>
+        <h6 className="col-title" style={{width: "4%"}}>Tags</h6>
     </div>
 
             <Router> 
                 <Switch> 
                 <Route path="/task/todo"> 
-                    <AllTaskLists tOfUser={props.tOfUser} taskCondition="false" priority= {newPriority} /> 
+                    <AllTaskLists tOfUser={props.tOfUser} taskCondition="false" priority= {newPriority} funcEditId={props.funcEditId}/> 
                 </Route>
                 <Route path="/task/done"> 
-                    <AllTaskLists tOfUser={props.tOfUser} taskCondition="true" priority={newPriority} /> 
+                    <AllTaskLists tOfUser={props.tOfUser} taskCondition="true" priority={newPriority} funcEditId={props.funcEditId} /> 
                 </Route>
                 <Route path="/task/hidden"> 
-                    <AllTaskLists tOfUser={props.tOfUser} taskCondition="false" priority={newPriority} hidden={"0"}/> 
+                    <AllTaskLists tOfUser={props.tOfUser} taskCondition="false" priority={newPriority} hidden={"0"} funcEditId={props.funcEditId}/> 
                 </Route>
+                {projectData.map((project) => { 
+                    return (
+                        <Route path={"/task/"+project.projectName}> 
+                            <AllTaskLists tOfUser={props.tOfUser} taskCondition="false" priority={newPriority} hidden={"1"} nameOfProject={project.projectName} funcEditId={props.funcEditId}/> 
+                        </Route>
+                    )
+                })}
                 </Switch>
             </Router>
             

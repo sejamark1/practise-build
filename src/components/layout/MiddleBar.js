@@ -7,10 +7,42 @@ import AddTask from "../pages/AddTaskPage/AddTask";
 import Login from "../pages/LoginPage/Login";
 import AddButton from "./UsefulComponenet/AddButton";
 import ChatBox from "../pages/ChatBoxPage/ChatBox";
+import AddProject from "../pages/AddTaskPage/AddProject";
+import EditTask from "../pages/AddTaskPage/EditTask";
+import { useEffect, useState } from "react";
+import fetchProjectData, { fetchProjectDataWithParams } from "../API";
+
 
 
 function MiddleBar(props){ 
+  const [editId, setEditId] = useState(-1); 
+
+  function alterEditId(id) {  
+    console.log(id)
+    setEditId(id) 
+  }
+
+  const [taskDataToEdit, setTaskDataToEdit] = useState({}); 
+  useEffect(()=>{ 
+    if(editId > 0){
+      fetchTaskDataToEdit(); 
+    }
+  }, [editId])
+
+
+
+  const fetchTaskDataToEdit = async () =>{ 
+    console.log("Fetching edit task data"); 
+    const outocme = await fetchProjectDataWithParams("edit-task-data", "GET", editId)
+    setTaskDataToEdit(outocme); 
+  }
+
+  
+  
+
+  
   return(
+
     <MiddleBarLayout id="middle-bar">
     <NavBar changeAdmin={props.swtichAdmin} tOfUser={props.tOfUser} />
 
@@ -24,16 +56,19 @@ function MiddleBar(props){
           <AddButton tOfUser={props.tOfUser} direct="/add-project" addWhat="Add Projects"/> 
       </Route>
       <Route path="/task/">
-        <TaskBar tOfUser={props.tOfUser} /> 
+        <TaskBar tOfUser={props.tOfUser} funcEditId={alterEditId} /> 
         <AddButton tOfUser={props.tOfUser} direct="/add-task" addWhat="Add Tasks"/> 
       </Route>
       {/*TODO: Change so it works for task and project*/}
       <Route path="/add-project">
-        <AddTask tOfUser={props.tOfUser} typeAdd="projects"/> 
+        <AddProject tOfUser={props.tOfUser} />
       </Route>
       <Route path="/add-task">
-        <AddTask tOfUser={props.tOfUser} typeAdd="task"/> 
+        <AddTask tOfUser={props.tOfUser}/> 
        </Route>
+       <Route path="/edit-task">
+       <EditTask tOfUser={props.tOfUser} editData={taskDataToEdit[0]}/>
+      </Route>
       <Route path="/chat-box"> 
         <ChatBox tOfUser={props.tOfUser} />
       </Route>

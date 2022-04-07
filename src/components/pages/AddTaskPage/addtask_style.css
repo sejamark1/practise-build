@@ -2,7 +2,14 @@
     font-family: "Roboto", sans-serif;
   }
 
-
+  #add_title{ 
+    font-size: 20px;
+    padding: 10px 10px 10px 10px;
+    font-weight: 100;
+    background: #7e007b;
+    margin-bottom: 0px;
+    color: white;
+  }
 
   #add_task{
     background: white;
@@ -105,6 +112,7 @@
     top: 443px;
     cursor: pointer;
     transition: 0.21s ease-in-out;
+    margin-top: 100px;
 }
 
 input::placeholder{ 

@@ -1,10 +1,15 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import PromptBox from "../../layout/PromptBoxLayout/PromptBox";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Login from "../LoginPage/Login";
+import { alterEditIds } from "../AddTaskPage/EditTask";
 
 
 
 function TaskBox(props){ 
+    //console.log("Return TaskBox " + props.funcEditId);
+
     const [taskBoxExpander, setTaskBoxExpander] = useState("deactive-expand"); 
     const [showTaskDetail, setShowTaskDetail] = useState("task-detail-cover")
     const [promptBox, setPromptBox] = useState(<div></div>)
@@ -70,7 +75,6 @@ function taskShowOrHide(){
     }).then((result)=> { 
         console.log(result); 
         result.json().then((resp)=>{ 
-
         })
     })
 
@@ -89,6 +93,36 @@ const priorityColours  = {
 }
 
 
+
+function updateIdOnAPI(){
+    console.log("Update Id for task is called.");
+    fetch(`http://localhost:9000/api/update_editId/${props.uniqueKey}`, { 
+        method: "post"
+    }).then((result)=> { 
+        console.log(result); 
+        result.json().then((resp)=>{ 
+        })
+    })
+
+
+    
+
+}
+
+
+function chnagePath(){ 
+    <Router> 
+    <Switch> 
+        <Route path="/login"> 
+            <Login tOfUser={"typeOfUser"}/> 
+        </Route>
+        </Switch>
+    </Router> 
+    
+}
+
+
+
 function priorityColourChanger_HTML(){ 
     if(props.taskPriority==1){ 
         return <div className="dot project task-priority" style={{backgroundColor: priorityColours.RED}}> {props.taskPriority}</div>
@@ -105,7 +139,7 @@ function priorityColourChanger_HTML(){
     return (
        
     <> 
- 
+
     
     
     
@@ -132,7 +166,7 @@ function priorityColourChanger_HTML(){
         :null}
         {props.tOfUser=="Admin"?  
         <div class="edit_hide">
-            <button class="btn"  name="UniqueKey" value={props.uniqueKey} > Edit </button>
+            <a href="/edit-task" ><button  class="btn"  name="UniqueKey" value={props.uniqueKey} onClick={updateIdOnAPI} > Edit </button></a>
             {props.taskPublish=="1" ? 
             <button class="btn"  name="UniqueKey" value={props.uniqueKey} onClick={taskShowOrHide} > Hide </button>
             : 

@@ -26,8 +26,10 @@ function Project(props) {
     
     
     }
+    var pName = "/task/" + props.pName; 
     return (
-        <div id="project">
+        <a href={pName}>
+        <div id="project" >
             <h1> {props.pName} </h1>
             <ProgressBar
                 completed={props.due}
@@ -41,6 +43,7 @@ function Project(props) {
                     {promptBox}
                 </button>
         </div>
+        </a>
     )
 }
 
