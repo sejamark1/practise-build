@@ -50,15 +50,15 @@ function TaskBar(props) {
 
 <TaskTopBar />
     <div  onClick={showFilterUpdate} id="top-bar-detail">
-        <h6 className="col-title" style={{width: "25%"}}>Project Name</h6>
-        <h6 className="col-title" style={{width: "33%"}}>Tasks Detail</h6>
-        <h6 className="col-title filter-priority" style={{width: "7%"}}>Due
+        <h6 className="col-title" style={{width: "20%"}}>Project Name</h6>
+        <h6 className="col-title" style={{width: "22%"}}>Tasks Detail</h6>
+        <h6 className="col-title filter-priority" style={{width: "5%"}}>Due
         <div className={showFilter}>
             <button onClick={() => setNewPriority("1")} className="priority-number">Latest</button>
             <button onClick={() => setNewPriority("2")} className="priority-number">Default</button>
         </div> 
         </h6>
-        <h6 className="col-title filter-priority" style={{width: "4%"}}>Priority
+        <h6 className="col-title filter-priority" style={{width: "3%"}}>Priority
             <div className={showFilter}>
                 <button onClick={() => setNewPriority("1")} className="priority-number">1</button>
                 <button onClick={() => setNewPriority("2")} className="priority-number">2</button>
@@ -66,8 +66,8 @@ function TaskBar(props) {
                 <button onClick={() => setNewPriority("All")} className="priority-number">All</button>
             </div> 
         </h6>
-        <h6 className="col-title" style={{width: "10%"}}>Status</h6>
-        <h6 className="col-title" style={{width: "13%"}}>Allocated</h6>
+        <h6 className="col-title" style={{width: "4%"}}>Status</h6>
+        <h6 className="col-title" style={{width: "25%"}}>Allocated</h6>
         <h6 className="col-title" style={{width: "4%"}}>Tags</h6>
     </div>
 

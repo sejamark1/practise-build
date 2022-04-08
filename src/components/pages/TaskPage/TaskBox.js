@@ -147,17 +147,17 @@ function priorityColourChanger_HTML(){
         <div className="project project-name">{props.projectName}</div>
         <div onClick={expandTaskBox} className={"project task-detail " + showTaskDetail}>{props.taskDetail}</div>
         <div className="project task-due">{props.taskDue}</div>
-        <div style={{"width": "2.5%"}}> 
+        <div style={{"width": "3.5%"}}> 
             {priorityColourChanger_HTML()}
         </div>
-        <div style={{marginTop: "3px"}}className="project task-check">
+        <div style={{marginTop: "9px"}}className="project task-check">
             {props.taskChekced=="true" ? 
                 <input type="checkbox" id="task-done" name="scales" onClick={updateStatus}  checked/> : <input type="checkbox" id="task-done" name="scales" onClick={updateStatus}/> }
         </div>
         <div id="task-belongs-to-username">
             <div id="">{props.taskLoggedInUsername}</div>
         </div>
-        <div style={{width: "10%"}}id="project-tags">
+        <div style={{position : "absolute", right :"300px"}}id="project-tags">
             <button id="btn_tags" style={{backgroundColor: "rgb(255, 50, 0)"}} >Design</button>
             <button id="btn_tags" style={{backgroundColor: "rgb(85, 255, 0)"}} >Develop</button>
         </div>

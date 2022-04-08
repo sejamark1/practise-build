@@ -79,7 +79,7 @@
   .task-priority{ 
   }
   .task-detail{ 
-    width: 25%;
+    width: 30%;
   }
   .barExpand{ 
     transition: 0.5s;
@@ -135,7 +135,7 @@
   }
   
   #task-belongs-to-username{ 
-    width: 7%;
+    width: 11%;
     color: white;
     margin: 13px 0 0 22px;
     padding-left: 15px;
@@ -157,7 +157,7 @@
 
 #del_button{ 
   position: absolute;
-  right: 28%;
+  right: 220px;
   top: 17px;
   width: 23px;
   height: 13px;
@@ -175,7 +175,8 @@
 
 /*Edit Hide button in taskbox*/
 .edit_hide{ 
-  padding-left: 160px;
+  position: absolute;
+  right: 10px;
 
 }
 .btn{ 
@@ -213,7 +214,7 @@
 
   .task-due{ 
     color: grey;
-    padding-left: 10px;
+    margin-left: 47%;
     font-size: 10px;
     width: 100%;
     text-align: left;
@@ -226,18 +227,19 @@
     top: 26px;
   }
   .task-check{ 
-    margin-top:2px;
+    margin-top: 18px;
     width: 3%;
     position: relative;
     top: -17px;
     left: 50px;
   }
   #task-belongs-to-username{ 
-    position: relative;
-    top: -51px;
+    position: absolute;
+    top: 112px;
     font-size: 13px;
     color: white;
-    margin: 10px 0 0 10px; 
+    margin: 10px 0 0 10px;
+    right: 50%;
   }
   #project-tags{ 
     position: relative;
@@ -262,7 +264,25 @@
     right: -47px;
 }
 
+  #del_button{ 
+    right: 30px;
+  }
+
 }
 
 
 
+
+@media only screen and (max-width: 1300px) {
+  .edit_hide {
+    display: grid;
+}
+#del_button{ 
+  right:  110px; 
+}
+
+#project-tags{ 
+  right: 170px;
+}
+
+}
