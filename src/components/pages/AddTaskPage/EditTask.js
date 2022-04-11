@@ -109,9 +109,9 @@ function returnStatus(){
                         <p> Project Name</p>
                         <div id="input_cover">
                         {taskDataToEdit == null ? 
-                        <input type="text" id="form_input" name="projectName" placeholder="ProjectName" />
+                        <input type="text" min="1" id="form_input" name="projectName" placeholder="ProjectName" />
                         : 
-                        <input type="text" id="form_input" name="projectName" placeholder="ProjectName" 
+                        <input type="text" min="1" id="form_input" name="projectName" placeholder="ProjectName" 
                         value={taskDataToEdit[0].projectName} />
                         }
 

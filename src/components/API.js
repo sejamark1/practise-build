@@ -1,5 +1,6 @@
 const fetchProjectData = async(endpoint, method) =>{ 
-    const apiURL = "http://localhost:9000/api/" + endpoint; 
+    const apiURL = "http://localhost:9000/api/" + endpoint;
+    console.log(apiURL);  
     const response = await fetch(apiURL, { 
         method: method, 
         // mode: "no-cors", 
@@ -13,7 +14,9 @@ const fetchProjectData = async(endpoint, method) =>{
 
 
 export const fetchDataFromDatabase = async(endpoint, method) =>{ 
-    const apiURL = "http://localhost:9000/api/" + endpoint; 
+    const apiURL = "http://localhost:9000/api/" + endpoint;
+    console.log(apiURL);  
+ 
     const response = await fetch(apiURL, { 
         method: method, 
         // mode: "no-cors", 

@@ -1,5 +1,7 @@
 import React from 'react'
+import SideBar, {aNormalDecoration} from '../../layout/SidebarLayout/SideBar'
 import "./login.css"
+
 
 
 function Login() {
@@ -25,7 +27,7 @@ function Login() {
               placeholder="Password"
             />
           </div>
-          <button class="btn_login" href="/home">Login</button>
+          <button class="btn_login" > <a style={aNormalDecoration} href="/home">Login</a></button>
         </form>
       </div>
     </div>

@@ -28,9 +28,12 @@ function Project(props) {
     }
     var pName = "/task/" + props.pName; 
     return (
-        <a href={pName}>
+        <>
+
         <div id="project" >
-            <h1> {props.pName} </h1>
+            <a href={pName}>
+             <h1 id="p_title"> {props.pName} </h1>
+            </a>
             <ProgressBar
                 completed={props.due}
                 className="wrapper"
@@ -38,12 +41,14 @@ function Project(props) {
                 completedClassName="barCompleted"
                 labelClassName="label"
                 />
-     
-                <button onClick={showPromptBox} style={{"right":"7%"}} id="del_button" name="UniqueKey" value="124" type="submit"> <img src="/images/delete.png"/>
-                    {promptBox}
+                <button onClick={showPromptBox} style={{"right":"7", "right" : "15px"}} id="del_button" name="UniqueKey" value="124" type="submit"> <img src="/images/delete.png"/>
+                {promptBox}
                 </button>
+
         </div>
-        </a>
+
+
+        </>
     )
 }
 

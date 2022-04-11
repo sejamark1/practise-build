@@ -10,7 +10,8 @@ import ChatBox from "../pages/ChatBoxPage/ChatBox";
 import AddProject from "../pages/AddTaskPage/AddProject";
 import EditTask from "../pages/AddTaskPage/EditTask";
 import { useEffect, useState } from "react";
-import fetchProjectData, { fetchProjectDataWithParams } from "../API";
+import fetchProjectData, { fetchDataFromDatabase, fetchProjectDataWithParams } from "../API";
+import Users from "../pages/AllUsers/Users";
 
 
 
@@ -37,7 +38,20 @@ function MiddleBar(props){
     setTaskDataToEdit(outocme); 
   }
 
+  const [allUsers, setAllUsers] = useState([]);
+  let usernames = allUsers.map(m => m.username)
+  useEffect(() => { 
+      fetchUsers(); 
+  }, [])
+
   
+  const fetchUsers = async() => { 
+      console.log("fetching users"); 
+      const outcome = await fetchDataFromDatabase("get-users-data", "GET"); 
+      setAllUsers(outcome); 
+  }
+
+
   
 
   
@@ -72,6 +86,20 @@ function MiddleBar(props){
       <Route path="/chat-box"> 
         <ChatBox tOfUser={props.tOfUser} />
       </Route>
+
+      
+
+
+      {allUsers.map((user) => { 
+        console.log(user.username); 
+        return (
+            <Route path={"/username/"+user.username}> 
+              <Users key={user.userId} fname={user.firstName} sname={user.surname} username={user.username} userRank={user.userRank}/>
+            </Route>
+        )
+    })}
+      
+
       </Switch>
     </Router>
 

@@ -1,0 +1,8 @@
+.iconUser{ 
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+#userDetail > a > p{ 
+    color: white;
+}

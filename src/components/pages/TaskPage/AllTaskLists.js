@@ -5,16 +5,24 @@ import { useState, useEffect } from 'react';
 
 
 
-//COLLECTION of all TaskBoxes aka TaskBox.js 
+
+
+function isToday(inputDate){
+    var date = new Date(); 
+    return inputDate.getDate() === date.getDate() && inputDate.getMonth() === date.getMonth() && inputDate.getFullYear() === date.getFullYear();
+
+}
 
 //RETURN a TaskBox with relavent data. 
 function returnTaskBox(tOfUser, tid, pName, tDetail,tDue, tPriority,tChecked, tLIUser, tTag, tPublish, editId){ 
+    let isItToday = isToday(new Date(tDue)) ?  "Today" : tDue; 
+    console.log(isToday(new Date(tDue))); 
 
     return <TaskBox tOfUser={tOfUser} key={tid} 
     uniqueKey={tid}
     projectName={pName}
     taskDetail={tDetail}
-    taskDue={tDue}
+    taskDue={isItToday}
     taskPriority={tPriority}
     taskChekced={tChecked}
     taskLoggedInUsername={tLIUser}

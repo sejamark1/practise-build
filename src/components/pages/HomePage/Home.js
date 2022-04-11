@@ -42,7 +42,7 @@ function Home(){
         <p id="page_title"> My Projects </p>
             <div id="home">
 
-            {backenddata.map(project=>returnProject(project.id, project.projectName, "40"))} 
+            {backenddata.map(project=>returnProject(project.id, project.projectName, "0"))} 
                 
             </div> 
         </div>

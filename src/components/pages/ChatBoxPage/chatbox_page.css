@@ -35,13 +35,14 @@
     transition: 1s all;
 }
 
-#user-icon > img{ 
-    height: 100%;
+#user-icon > p{ 
+  font-size : 26px; 
+  margin-top: 23px;
 }
 #user-icon {
     height: 75px;
     width: 75px;
-    background: green;
+    background: #57c3b4;
     border-radius: 100%;
     margin-left: 10px;
     cursor: pointer;
@@ -49,13 +50,36 @@
 }
 
 
+
 /*Chat */
 #chat-box-with-user {
     margin-top: 10px;
 }
+#chat-box-with-user > p{ 
+  background: #29a76d;
+  padding: 10px;
+  margin-top: -9px;
+  transition: 0.25s all;
+}
+
+#chat-box-with-user > a > p{ 
+  background: #29a76d;
+  padding: 10px;
+  margin-top: -9px;
+  transition: 0.25s all;
+
+}
+#chat-box-with-user > a > p:hover{ 
+  transform: scale(1.1);
+  transition: 0.25s all;
+
+}
+#chat-box-with-user > a { 
+  text-decoration: none;
+}
 #chat-box-user {
   height: 800px;
-  width: 40%;
+  width: 80%;
 
   margin: 0 auto;
 }
@@ -110,15 +134,16 @@
 
 #send-button{ 
     position: relative;
-    top: -48px;
+    top: -58px;
     padding-left: 10px;
 }
 #msg-bar{
-    transition: 0.5s all;
-    width: 88%;
-    height: 30px;
-    border-radius: 10px;
-    border: 1px solid grey;
+  transition: 0.5s all;
+  width: 83%;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid grey;
+  margin-right: 15px;
 }
 
 
@@ -133,6 +158,7 @@
     background: #00adff;
     margin-top: 15px;
     color: white;
+    margin-right: 10px;
 }
 
 #send-button > button:hover{ 

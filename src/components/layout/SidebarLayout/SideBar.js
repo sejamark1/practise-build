@@ -50,7 +50,7 @@ function SideBar(props){
             <p className="side-text-detail logo"> TIMEly </p> 
             {backenddata.map(project=>returnProject(project.projectName))}
             <div style={{"display": display}}ref={loggedInUserButton} id="user-bar">
-                <button>Log out</button>
+                <button> <a style={aNormalDecoration}href="/login" >Log out</a></button>
                 <button>Account</button>
             </div>
             <div id="bottom-side-bar">
@@ -70,5 +70,6 @@ function SideBar(props){
 }
 
 
+export const aNormalDecoration = {"color" : "white", "text-decoration" : "none"}; 
 
 export default SideBar; 

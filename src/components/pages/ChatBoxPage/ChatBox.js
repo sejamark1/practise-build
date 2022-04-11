@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import "./chatbox_page.css"
 import { useState } from 'react'
+import { fetchDataFromDatabase } from '../../API';
 
 
 
@@ -11,6 +12,8 @@ function ChatBox() {
     const [slide, setSlide] = useState("0"); 
     const [msgArray, setMsgArray] = useState(array); // Fetch data for this in real. 
     const [message, setMessage] = useState(""); 
+    var [currentUser, setCurrentUser] = useState("None"); 
+
     function slideBack(){ 
         setSlide((parseInt(slide) + -100).toString()); 
         console.log(slide); 
@@ -38,11 +41,8 @@ function ChatBox() {
     
     }
 
-    // useEffect(()=>{ 
-    //     console.log("x"); 
-    // }, [msgArray])
 
-    // MSG function
+    
 
     function Rmsg(msg, sr){ // sr=sendORreceive
         return (<div id={new Date().today}> 
@@ -50,28 +50,44 @@ function ChatBox() {
         </div>)
     }
 
-
-    // function addSendMsg(){ // TODO: 
-    //     msgArray.push(Smsg("{new Date().today}", "send-msg"));
-    //     setMsgArray(msgArray);
-    //     console.log(msgArray)
-    // }
-
-
-
     function Smsg(msg,sr){
         return (<div id={sr}> 
             <p > {msg} </p>
         </div>)
     }
+
+    function getValueOfElement(clickedUser){
+        setCurrentUser(clickedUser); 
+
+    }
+
+
+    const [allUsers, setAllUsers] = useState([]);
+    let usernames = allUsers.map(m => m.username)
+    useEffect(() => { 
+        fetchUsers(); 
+    }, [])
+
+    const fetchUsers = async() => { 
+        console.log("fetching users"); 
+        const outcome = await fetchDataFromDatabase("get-users-data", "GET"); 
+        setAllUsers(outcome); 
+    }
+
+    function returnUsers(){ 
+        return (
+            usernames.map(user =><div id="user-icon"> <p value={user} on  onClick={() => getValueOfElement(user)}>{user.slice(0,4)}</p> </div> ) 
+        )
+
+    }
+    console.log(allUsers); 
   return (
     <div id="chatbox">
         <div id="chat-user-icon">
         <div onClick={slideBack} id="slider-back"> <img src="images/back_arrow.png" /> </div>
         <div style={{"width": "95%","overflow": "hidden"}}>
             <div style={{transform: "translateX("+slide+"px)"}} id="chat-users">
-                <div id="user-icon"> <img src="https://twinfinite.net/wp-content/uploads/2021/12/Big-Bang-Theory.jpeg" /></div> // instead of image, fetch the user and use the first letter of their username. OR create component of users.
-                <div id="user-icon"> <img src="https://twinfinite.net/wp-content/uploads/2021/12/Big-Bang-Theory.jpeg" /></div>
+            {returnUsers()}
 
 
                 
@@ -80,7 +96,12 @@ function ChatBox() {
         <div onClick={slideForward} id="slider-forward"> <img src="images/forward_arrow.png" /> </div>
     </div>    
     
-    <div id="chat-box-with-user">
+    <div id="chat-box-with-user">    
+    {currentUser === "None" ? 
+    <p style={{"color": "white"}}>You are chatting with: {currentUser} </p>
+    : 
+    <a href={"username/" + currentUser}> <p style={{"color": "white"}}>You are chatting with: {currentUser} </p> </a> 
+    }
         <div id="chat-box-user"> 
         <div id="receive-send"> 
             <div id="send" > 

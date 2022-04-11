@@ -16,13 +16,16 @@
 
 
 }
-#project > h1{ 
+#p_title{ 
     color: white;
     font-size: 30px;
     font-weight: 100;
     text-align: center;
     padding-top: 75px;
     padding-bottom: 76px;
+    text-decoration: underline;
+    -webkit-highlight: inherit;
+    text-decoration-color: grey;
 }
 #page_title{ 
     color: white;
