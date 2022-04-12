@@ -32,7 +32,8 @@
 
 
 
-  .dot {
+
+.dot {
   height: 25px;
   width: 25px;
   border-radius: 50%;
@@ -41,7 +42,6 @@
   margin-left: 100pxrgb(0, 110, 255);
   padding: 1px 1px 1px 0px;
   }
-  
   
   .project{ 
     color: white;
