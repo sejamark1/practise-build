@@ -8,6 +8,7 @@
     border: 2px solid grey;
     margin: 20px;
     cursor: pointer;
+    overflow: hidden;
 }
 
 #project:hover{ 
@@ -45,7 +46,7 @@
 
 .barCompleted {
     background-color: #007fff;
-    width: 80%;
+    width: 140%;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     height: 20px;

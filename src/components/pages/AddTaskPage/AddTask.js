@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
+
 import { fetchDataFromDatabase } from '../../API';
+import { returnHTMLOptions } from '../../RefactorFunction';
 import "./addtask_style.css"
+
 
 // class= addtask_X
 
@@ -30,14 +33,7 @@ function AddTask(props) {
 
 
 
-    function returnHTMLOptions(arr){ 
-        return (
-            arr.map(user =>
-                <option value={user}>{user}</option> )
-        )
-    }
-    console.log(allProjects); 
-
+    
 
 
   // IMPORTANT: Id id and some attribute are of Task. CSS resued for both AddTask.js and AddProject.js and EditTask.js 
@@ -95,9 +91,9 @@ function AddTask(props) {
      
                 <div id="input_cover_all">
                 <p> Task Detail</p>
-                <div style={{ height: "215px", width: "350px" }} id="input_cover">
+                <div style={{ height: "215px", width: "98%" }} id="input_cover">
                 <textarea
-                    style={{ height: "215px", width: "350px", resize: "none" }}
+                    style={{ height: "215px", width: "100%", resize: "none" }}
                     id="form_input"
                     name="taskDetail"
                     rows="4"
@@ -129,13 +125,11 @@ function AddTask(props) {
                 <div id="input_cover_all">
                 <p> Task Priority </p>
                 <div id="input_cover">
-                <input
-                    type="text"
-                    id="form_input"
-                    name="tpriority"
-                    placeholder="1,2,3"
-                    value={"1"}
-                />
+                <select name="tpriority" id="form_input">
+                    <option value={"1"}>1</option> 
+                    <option value={"2"}>2</option> 
+                    <option value={"3"}>3</option> 
+                </select>
                 </div>
             </div>
 

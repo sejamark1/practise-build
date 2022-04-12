@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import fetchProjectData, { fetchDataFromDatabase, fetchProjectDataWithParams } from '../../API';
+import { returnHTMLOptions, returnHTMLOptionsSelected } from '../../RefactorFunction';
 import "./addtask_style.css"
 
 
@@ -12,19 +13,38 @@ function EditTask(props) {
 
 
     const [taskDataToEdit, setTaskDataToEdit] = useState(null); 
+    const [allProjects, setAllProjects] = useState([{}]); 
+    let projectsName = allProjects.map(project => project.projectName)
+    const [allUsers, setAllUsers] = useState([]);
+    let usernames = allUsers.map(m => m.username)
+
     useEffect(()=>{ 
         fetchTaskDataToEdit(); 
+        fetchProjects(); 
+        fetchUsers(); 
     }, [])
   
   
+    const fetchProjects = async() => { 
+        console.log("fetching projects"); 
+        const outcome = await fetchDataFromDatabase("user_project_data", "GET"); 
+        setAllProjects(outcome); 
+    }
+
+
   
     const fetchTaskDataToEdit = async () =>{ 
       console.log("Fetching edit task data"); 
       const outcome = await fetchDataFromDatabase("edit-task-data", "GET")
+      //setTaskDataToEdit(outcome[0]); 
       setTaskDataToEdit(outcome); 
       console.log(outcome);
     }
-
+    const fetchUsers = async() => { 
+        console.log("fetching users"); 
+        const outcome = await fetchDataFromDatabase("get-users-data", "GET"); 
+        setAllUsers(outcome); 
+    }
     console.log(taskDataToEdit); 
 
   
@@ -80,6 +100,11 @@ function returnStatus(){
 
 }
 
+
+
+
+
+
 // find a way to get the key there. 
 
   
@@ -104,6 +129,7 @@ function returnStatus(){
                     }
 
                     </div>
+                    
                 </div> 
                     <div id="input_cover_all">
                         <p> Project Name</p>
@@ -111,9 +137,12 @@ function returnStatus(){
                         {taskDataToEdit == null ? 
                         <input type="text" min="1" id="form_input" name="projectName" placeholder="ProjectName" />
                         : 
-                        <input type="text" min="1" id="form_input" name="projectName" placeholder="ProjectName" 
-                        value={taskDataToEdit[0].projectName} />
+                        <select id="form_input" name="projectName"> 
+                            {returnHTMLOptionsSelected(projectsName, taskDataToEdit[0].projectName)}
+                        </select>
+
                         }
+
 
                         </div>
                     </div> 
@@ -130,14 +159,11 @@ function returnStatus(){
                     name="allocatedTo"
                     placeholder="Allocated To"
                 /> : 
-                
-                <input 
-                    type="text"
-                    id="form_input"
-                    name="allocatedTo"
-                    placeholder="Allocated To"
-                    value={taskDataToEdit[0].username}
-                />
+                <select name="allocatedTo" id="form_input">
+                    {returnHTMLOptionsSelected(usernames, taskDataToEdit[0].username)}
+                </select>
+
+
             }
                 </div>
             </div> 
@@ -171,10 +197,10 @@ function returnStatus(){
      
                 <div id="input_cover_all">
                 <p> Task Detail</p>
-                <div style={{ height: "215px", width: "350px" }} id="input_cover">
+                <div style={{ height: "215px", width: "98%" }} id="input_cover">
                 {taskDataToEdit == null ? 
                 <textarea
-                    style={{ height: "215px", width: "350px", resize: "none" }}
+                    style={{ height: "215px", width: "100%", resize: "none" }}
                     id="form_input"
                     name="taskDetail"
                     rows="4"
@@ -182,7 +208,7 @@ function returnStatus(){
                 />
                 :
                 <textarea
-                style={{ height: "215px", width: "350px", resize: "none" }}
+                style={{ height: "215px", width: "100%", resize: "none" }}
                 id="form_input"
                 name="taskDetail"
                 rows="4"
@@ -203,14 +229,14 @@ function returnStatus(){
                 <div id="input_cover">
                 {taskDataToEdit == null ? 
                 <input
-                    type="text"
+                    type="date"
                     id="form_input"
                     name="tduedate"
                     placeholder="DD/MM/YYYY"
                 />
                 : 
                 <input
-                    type="text"
+                    type="date"
                     id="form_input"
                     name="tduedate"
                     placeholder="DD/MM/YYYY"

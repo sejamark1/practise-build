@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import "./chatbox_page.css"
 import { useState } from 'react'
 import { fetchDataFromDatabase } from '../../API';
-
+import { returnTypeOfUser } from '../../../App';
+import AddButton from '../../layout/UsefulComponenet/AddButton';
 
 
 
@@ -76,7 +77,7 @@ function ChatBox() {
 
     function returnUsers(){ 
         return (
-            usernames.map(user =><div id="user-icon"> <p value={user} on  onClick={() => getValueOfElement(user)}>{user.slice(0,4)}</p> </div> ) 
+            usernames.map(user =><div id="user-icon"> <p style={{"color" : "white"}}value={user} on  onClick={() => getValueOfElement(user)}>{user.slice(0,4)}</p> </div> ) 
         )
 
     }
@@ -87,12 +88,14 @@ function ChatBox() {
         <div onClick={slideBack} id="slider-back"> <img src="images/back_arrow.png" /> </div>
         <div style={{"width": "95%","overflow": "hidden"}}>
             <div style={{transform: "translateX("+slide+"px)"}} id="chat-users">
-            {returnUsers()}
-
-
-                
+            {returnUsers()} 
             </div>
         </div>
+        <a style={{"text-decoration" :"none"}}href = "/add-users">
+            <div id="user-icon" style={addUserButtonStyle}> 
+                <p style={{"color" : "white" }} >{"+"}</p> 
+            </div>
+        </a>
         <div onClick={slideForward} id="slider-forward"> <img src="images/forward_arrow.png" /> </div>
     </div>    
     
@@ -111,7 +114,7 @@ function ChatBox() {
         <div id="send-button"> 
             <input onChange={event => setMessage(event.target.value)} id="msg-bar" type="text" placeholder="input your message here" /> 
             <button onClick={addSendMsg}> SEND </button>
-            <button onClick={addReceiveMsg}> RECEIVE </button>
+            <button style={{"background" : "black"}}onClick={addReceiveMsg}> RECEIVE </button>
         </div> 
         </div> 
     </div>
@@ -132,5 +135,6 @@ function ChatBox() {
   )
 }
 
+let addUserButtonStyle = {"margin" : "10px 10px 0 0", "background" : "#b90077", "transform" : "scale(0.9)", "text-decoration" :"none"}
 export default ChatBox; 
 //TODO: instead of using two seperate thing, try with css left and right and put the msg there }

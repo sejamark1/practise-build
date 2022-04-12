@@ -9,10 +9,11 @@ import Login from "./components/pages/LoginPage/Login";
 ///412: Mapping data to components. 
 
 
+var typeOfUser = "Admin"; 
+export var currentUser = "sheldoncooper20"; 
 
 function App(){ 
 
-    var typeOfUser = "Admin"; 
 
     
 
@@ -47,6 +48,9 @@ function App(){
     
         </div>
     ); 
+}
+export function returnTypeOfUser(){ 
+    return typeOfUser; 
 }
 
 

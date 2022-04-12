@@ -7,12 +7,12 @@ function NavBar(props) {
     return (
       <div id="navbar">
       <ExpandImage href=""> <button id="nav_button"><img src="/images/expand.png"/></button> </ExpandImage>
-      <a href="/home"> <button id="nav_button">Home</button> </a>
-      <a href="/task"> <button id="nav_button">Task</button> </a>
-       <a href="/chat-box"> <button id="nav_button">Chat</button> </a>
-       <a href="/home"> <button id="nav_button">Contact</button> </a>
-       <button onClick={props.changeAdmin} id="nav_button">Admin</button>
-       
+      <a style={{"text-decoration": "none"}} href="/home"> <button id="nav_button">Home</button> </a>
+      <a style={{"text-decoration": "none"}} href="/task"> <button id="nav_button">Task</button> </a>
+       <a style={{"text-decoration": "none"}} href="/chat-box"> <button id="nav_button">Chat</button> </a>
+       <a style={{"text-decoration": "none"}} href="/contact-us"> <button id="nav_button">Contact</button> </a>
+
+        
 
       </div>
     );

@@ -35,7 +35,7 @@ function Project(props) {
              <h1 id="p_title"> {props.pName} </h1>
             </a>
             <ProgressBar
-                completed={props.due}
+                completed={"0"}
                 className="wrapper"
                 barContainerClassName="container"
                 completedClassName="barCompleted"

@@ -1,6 +1,31 @@
 import React from 'react'
+import { fetchDataFromDatabase } from '../../API';
+import { useEffect, useState } from 'react'
+import { currentUser } from '../../../App';
+import { returnHTMLOptionsSelected } from '../../RefactorFunction';
 
 function AddProject() {
+
+
+    const [teamLeaders, setTeamLeaders] = useState([{}]); 
+    let teamLeaderArrays = teamLeaders.map(user => user.username)
+    useEffect(() => { 
+        fetchProjectLeaders(); 
+
+    }, [])
+
+
+    
+
+    const fetchProjectLeaders = async() => { 
+        console.log("fetching project leaders"); 
+        const outcome = await fetchDataFromDatabase("teamleader_data", "GET"); 
+        setTeamLeaders(outcome); 
+    }
+
+
+    
+
   return (
     <div class="disabled" id="add_task">
     <h1 id="add_title">Add Project</h1>
@@ -22,12 +47,10 @@ function AddProject() {
             <div id="input_cover_all">
                 <p> Project Leader</p>
                 <div id="input_cover">
-                <input
-                    type="text"
-                    id="form_input"
-                    name="pleader"
-                    placeholder="Project Name"
-                />
+                <select name="pleader" id="form_input">
+                    {returnHTMLOptionsSelected(teamLeaderArrays, currentUser)}
+                </select>
+
                 </div>
             </div>
    
@@ -49,9 +72,9 @@ function AddProject() {
 
             <div id="input_cover_all">
                 <p> Project Detail</p>
-                <div style={{ height: "215px", width: "350px" }} id="input_cover">
+                <div style={{ height: "215px", width: "98%" }} id="input_cover">
                 <textarea
-                    style={{ height: "215px", width: "350px", resize: "none" }}
+                    style={{ height: "215px", width: "100%", resize: "none" }}
                     id="form_input"
                     name="pdetail"
                     rows="4"
@@ -68,7 +91,7 @@ function AddProject() {
                 <p> Start Date</p>
                 <div id="input_cover">
                 <input
-                    type="text"
+                    type="DATE"
                     id="form_input"
                     name="pstartDate"
                     placeholder="DD/MM/YYYY"
@@ -82,7 +105,7 @@ function AddProject() {
                 <p> End Date</p>
                 <div id="input_cover">
                 <input
-                    type="text"
+                    type="DATE"
                     id="form_input"
                     name="pEndDate"
                     placeholder="DD/MM/YYYY"

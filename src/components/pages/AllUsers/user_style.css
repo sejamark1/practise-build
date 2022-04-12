@@ -6,3 +6,19 @@
 #userDetail > a > p{ 
     color: white;
 }
+
+#user_del_button{ 
+    width: 100px;
+    height: 40px;
+    border: none;
+    color: white;
+    background: #7e1313;
+    border-radius: 10px;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
+
+#user_del_button:hover{ 
+    background: #500909;
+}

@@ -68,7 +68,7 @@ function expandTaskBox() {
 }
 
 function taskShowOrHide(){
-    let taskShowOrHide= props.taskPublish=="1" ? "Hide" : "Show"; 
+    let taskShowOrHide= props.taskPublish=="1" ? "Hide" : "Publish"; 
 
     fetch(`http://localhost:9000/api/update-publish/${props.uniqueKey}/${taskShowOrHide}`, { 
         method: "post"
@@ -170,7 +170,7 @@ function priorityColourChanger_HTML(){
             {props.taskPublish=="1" ? 
             <button class="btn"  name="UniqueKey" value={props.uniqueKey} onClick={taskShowOrHide} > Hide </button>
             : 
-            <button class="btn"  name="UniqueKey" value={props.uniqueKey} onClick={taskShowOrHide} > Show </button>
+            <button class="btn"  name="UniqueKey" value={props.uniqueKey} onClick={taskShowOrHide} > Publish </button>
             }
         </div> : 
         null} 

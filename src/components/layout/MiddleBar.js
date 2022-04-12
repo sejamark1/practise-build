@@ -12,6 +12,8 @@ import EditTask from "../pages/AddTaskPage/EditTask";
 import { useEffect, useState } from "react";
 import fetchProjectData, { fetchDataFromDatabase, fetchProjectDataWithParams } from "../API";
 import Users from "../pages/AllUsers/Users";
+import AddUsers from "../pages/AllUsers/AddUsers";
+import ContactUs from "../pages/Contact/ContactUs";
 
 
 
@@ -87,7 +89,9 @@ function MiddleBar(props){
         <ChatBox tOfUser={props.tOfUser} />
       </Route>
 
-      
+      <Route path="/contact-us"> 
+        <ContactUs />
+      </Route>
 
 
       {allUsers.map((user) => { 
@@ -98,7 +102,9 @@ function MiddleBar(props){
             </Route>
         )
     })}
-      
+        <Route path="/add-users"> 
+          <AddUsers /> 
+        </Route>
 
       </Switch>
     </Router>
